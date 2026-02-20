@@ -9,21 +9,159 @@
 /* Begin PBXBuildFile section */
 		CEBB5D372F44AA1B00A5E08D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D362F44AA1B00A5E08D /* AppDelegate.swift */; };
 		CEBB5D392F44AA1B00A5E08D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D382F44AA1B00A5E08D /* SceneDelegate.swift */; };
-		CEBB5D3B2F44AA1B00A5E08D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D3A2F44AA1B00A5E08D /* ViewController.swift */; };
 		CEBB5D3E2F44AA1B00A5E08D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBB5D3C2F44AA1B00A5E08D /* Main.storyboard */; };
 		CEBB5D402F44AA1E00A5E08D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBB5D3F2F44AA1E00A5E08D /* Assets.xcassets */; };
 		CEBB5D432F44AA1E00A5E08D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBB5D412F44AA1E00A5E08D /* LaunchScreen.storyboard */; };
+		CEBB5D562F44E48E00A5E08D /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D552F44E48E00A5E08D /* MainCoordinator.swift */; };
+		CEBB5D582F44E4E300A5E08D /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D572F44E4E300A5E08D /* AuthViewController.swift */; };
+		CEBB5D5A2F44E59200A5E08D /* AuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D592F44E59200A5E08D /* AuthInteractor.swift */; };
+		CEBB5D5C2F44E61100A5E08D /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D5B2F44E61100A5E08D /* AuthPresenter.swift */; };
+		CEBB5D5E2F44E68400A5E08D /* AuthBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D5D2F44E68400A5E08D /* AuthBuilder.swift */; };
+		CEBB5D602F44EB6000A5E08D /* AuthDataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D5F2F44EB6000A5E08D /* AuthDataFlow.swift */; };
+		CEBB5D652F44FF2B00A5E08D /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D642F44FF2B00A5E08D /* AuthView.swift */; };
+		CEBB5D682F4501F300A5E08D /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D672F4501F300A5E08D /* AuthProvider.swift */; };
+		CEBB5D6B2F45050000A5E08D /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D6A2F45050000A5E08D /* Storage.swift */; };
+		CEBB5D6D2F4506FE00A5E08D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D6C2F4506FE00A5E08D /* AuthService.swift */; };
+		CEBB5D6F2F450B4C00A5E08D /* StorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D6E2F450B4C00A5E08D /* StorageError.swift */; };
+		CEBB5D712F450C9000A5E08D /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D702F450C9000A5E08D /* UserStorage.swift */; };
+		CEBB5D732F450CC400A5E08D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D722F450CC400A5E08D /* User.swift */; };
+		CEBB5D752F450DCB00A5E08D /* CardStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D742F450DCB00A5E08D /* CardStorage.swift */; };
+		CEBB5D772F450DDB00A5E08D /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D762F450DDB00A5E08D /* Card.swift */; };
+		CEBB5D792F450E1000A5E08D /* TransactionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D782F450E1000A5E08D /* TransactionStorage.swift */; };
+		CEBB5D7B2F450E2700A5E08D /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D7A2F450E2700A5E08D /* Transaction.swift */; };
+		CEBB5D7E2F452B5600A5E08D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D7D2F452B5600A5E08D /* HomeViewController.swift */; };
+		CEBB5D802F452C0B00A5E08D /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D7F2F452C0B00A5E08D /* HomePresenter.swift */; };
+		CEBB5D822F452C9500A5E08D /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D812F452C9500A5E08D /* HomeInteractor.swift */; };
+		CEBB5D842F452D6700A5E08D /* HomeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D832F452D6700A5E08D /* HomeProvider.swift */; };
+		CEBB5D862F452DB200A5E08D /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D852F452DB200A5E08D /* HomeBuilder.swift */; };
+		CEBB5D882F452DF900A5E08D /* HomeDataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D872F452DF900A5E08D /* HomeDataFlow.swift */; };
+		CEBB5D8A2F4536ED00A5E08D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D892F4536ED00A5E08D /* HomeView.swift */; };
+		CEBB5D8C2F45388F00A5E08D /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D8B2F45388F00A5E08D /* UserService.swift */; };
+		CEBB5D8E2F45389E00A5E08D /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D8D2F45389E00A5E08D /* TransactionService.swift */; };
+		CEBB5D902F4538AC00A5E08D /* CardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D8F2F4538AC00A5E08D /* CardService.swift */; };
+		CEBB5D932F45447A00A5E08D /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D922F45447A00A5E08D /* DependencyContainer.swift */; };
+		CEBB5D962F454F1200A5E08D /* CardDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D952F454F1200A5E08D /* CardDetailsViewController.swift */; };
+		CEBB5D982F454F2700A5E08D /* CardDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D972F454F2700A5E08D /* CardDetailsInteractor.swift */; };
+		CEBB5D9A2F454F3900A5E08D /* CardDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D992F454F3800A5E08D /* CardDetailsPresenter.swift */; };
+		CEBB5D9C2F454F4700A5E08D /* CardDetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D9B2F454F4700A5E08D /* CardDetailsBuilder.swift */; };
+		CEBB5D9E2F454F5600A5E08D /* CardDetailsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D9D2F454F5600A5E08D /* CardDetailsProvider.swift */; };
+		CEBB5DA02F454F6200A5E08D /* CardDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D9F2F454F6200A5E08D /* CardDetailsView.swift */; };
+		CEBB5DA22F45525C00A5E08D /* CardDetailsDataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DA12F45525C00A5E08D /* CardDetailsDataFlow.swift */; };
+		CEBB5DA52F4558D000A5E08D /* TransactionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DA42F4558D000A5E08D /* TransactionDetailsView.swift */; };
+		CEBB5DA72F4558DB00A5E08D /* TransactionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DA62F4558DB00A5E08D /* TransactionDetailsViewController.swift */; };
+		CEBB5DA92F4558E800A5E08D /* TransactionDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DA82F4558E800A5E08D /* TransactionDetailsInteractor.swift */; };
+		CEBB5DAB2F4558F300A5E08D /* TransactionDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DAA2F4558F300A5E08D /* TransactionDetailsPresenter.swift */; };
+		CEBB5DAD2F4558FF00A5E08D /* TransactionDetailsDataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DAC2F4558FF00A5E08D /* TransactionDetailsDataFlow.swift */; };
+		CEBB5DAF2F45590C00A5E08D /* TransactionDetailsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DAE2F45590C00A5E08D /* TransactionDetailsProvider.swift */; };
+		CEBB5DB12F45591D00A5E08D /* TransactionDetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DB02F45591D00A5E08D /* TransactionDetailsBuilder.swift */; };
+		CEBB5DB42F45C7DE00A5E08D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DB32F45C7DE00A5E08D /* SettingsViewController.swift */; };
+		CEBB5DB62F45C7EC00A5E08D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DB52F45C7EC00A5E08D /* SettingsView.swift */; };
+		CEBB5DB82F45C7F700A5E08D /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DB72F45C7F700A5E08D /* SettingsInteractor.swift */; };
+		CEBB5DBA2F45C80300A5E08D /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DB92F45C80300A5E08D /* SettingsPresenter.swift */; };
+		CEBB5DBC2F45C81100A5E08D /* SettingsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DBB2F45C81100A5E08D /* SettingsProvider.swift */; };
+		CEBB5DBE2F45C81D00A5E08D /* SettingsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DBD2F45C81D00A5E08D /* SettingsBuilder.swift */; };
+		CEBB5DC02F45C82900A5E08D /* SettingsDataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DBF2F45C82900A5E08D /* SettingsDataFlow.swift */; };
+		CEBB5DC32F45CFE000A5E08D /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DC22F45CFE000A5E08D /* EditProfileView.swift */; };
+		CEBB5DC52F45CFEB00A5E08D /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DC42F45CFEB00A5E08D /* EditProfileViewController.swift */; };
+		CEBB5DC72F45CFF700A5E08D /* EditProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DC62F45CFF700A5E08D /* EditProfileInteractor.swift */; };
+		CEBB5DC92F45D00100A5E08D /* EditProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DC82F45D00100A5E08D /* EditProfilePresenter.swift */; };
+		CEBB5DCB2F45D00B00A5E08D /* EditProfileProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DCA2F45D00B00A5E08D /* EditProfileProvider.swift */; };
+		CEBB5DCD2F45D01800A5E08D /* EditProfileBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DCC2F45D01800A5E08D /* EditProfileBuilder.swift */; };
+		CEBB5DCF2F45D02200A5E08D /* EditProfileDataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DCE2F45D02200A5E08D /* EditProfileDataFlow.swift */; };
+		CEBB5DD22F45D75000A5E08D /* AddCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DD12F45D75000A5E08D /* AddCardView.swift */; };
+		CEBB5DD42F45D75F00A5E08D /* AddCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DD32F45D75F00A5E08D /* AddCardViewController.swift */; };
+		CEBB5DD62F45D76900A5E08D /* AddCardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DD52F45D76900A5E08D /* AddCardInteractor.swift */; };
+		CEBB5DD82F45D77200A5E08D /* AddCardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DD72F45D77200A5E08D /* AddCardPresenter.swift */; };
+		CEBB5DDA2F45D77C00A5E08D /* AddCardProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DD92F45D77C00A5E08D /* AddCardProvider.swift */; };
+		CEBB5DDC2F45D78600A5E08D /* AddCardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DDB2F45D78600A5E08D /* AddCardBuilder.swift */; };
+		CEBB5DDE2F45D79500A5E08D /* AddCardDataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DDD2F45D79500A5E08D /* AddCardDataFlow.swift */; };
+		CEBB5DE12F45DCDA00A5E08D /* TransferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DE02F45DCDA00A5E08D /* TransferView.swift */; };
+		CEBB5DE32F45DCE300A5E08D /* TransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DE22F45DCE300A5E08D /* TransferViewController.swift */; };
+		CEBB5DE52F45DD0500A5E08D /* TransferInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DE42F45DD0500A5E08D /* TransferInteractor.swift */; };
+		CEBB5DE72F45DD1200A5E08D /* TransferPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DE62F45DD1200A5E08D /* TransferPresenter.swift */; };
+		CEBB5DE92F45DD1C00A5E08D /* TransferProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DE82F45DD1C00A5E08D /* TransferProvider.swift */; };
+		CEBB5DEB2F45DD2800A5E08D /* TransferBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DEA2F45DD2800A5E08D /* TransferBuilder.swift */; };
+		CEBB5DED2F45DD3300A5E08D /* TransferDataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DEC2F45DD3300A5E08D /* TransferDataFlow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CEBB5D332F44AA1B00A5E08D /* BetaBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetaBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEBB5D362F44AA1B00A5E08D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEBB5D382F44AA1B00A5E08D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CEBB5D3A2F44AA1B00A5E08D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CEBB5D3D2F44AA1B00A5E08D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEBB5D3F2F44AA1E00A5E08D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEBB5D422F44AA1E00A5E08D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEBB5D442F44AA1E00A5E08D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEBB5D552F44E48E00A5E08D /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		CEBB5D572F44E4E300A5E08D /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		CEBB5D592F44E59200A5E08D /* AuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthInteractor.swift; sourceTree = "<group>"; };
+		CEBB5D5B2F44E61100A5E08D /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
+		CEBB5D5D2F44E68400A5E08D /* AuthBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthBuilder.swift; sourceTree = "<group>"; };
+		CEBB5D5F2F44EB6000A5E08D /* AuthDataFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataFlow.swift; sourceTree = "<group>"; };
+		CEBB5D642F44FF2B00A5E08D /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		CEBB5D672F4501F300A5E08D /* AuthProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
+		CEBB5D6A2F45050000A5E08D /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		CEBB5D6C2F4506FE00A5E08D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		CEBB5D6E2F450B4C00A5E08D /* StorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageError.swift; sourceTree = "<group>"; };
+		CEBB5D702F450C9000A5E08D /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
+		CEBB5D722F450CC400A5E08D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CEBB5D742F450DCB00A5E08D /* CardStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardStorage.swift; sourceTree = "<group>"; };
+		CEBB5D762F450DDB00A5E08D /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		CEBB5D782F450E1000A5E08D /* TransactionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionStorage.swift; sourceTree = "<group>"; };
+		CEBB5D7A2F450E2700A5E08D /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		CEBB5D7D2F452B5600A5E08D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		CEBB5D7F2F452C0B00A5E08D /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		CEBB5D812F452C9500A5E08D /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		CEBB5D832F452D6700A5E08D /* HomeProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeProvider.swift; sourceTree = "<group>"; };
+		CEBB5D852F452DB200A5E08D /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
+		CEBB5D872F452DF900A5E08D /* HomeDataFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataFlow.swift; sourceTree = "<group>"; };
+		CEBB5D892F4536ED00A5E08D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CEBB5D8B2F45388F00A5E08D /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		CEBB5D8D2F45389E00A5E08D /* TransactionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionService.swift; sourceTree = "<group>"; };
+		CEBB5D8F2F4538AC00A5E08D /* CardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardService.swift; sourceTree = "<group>"; };
+		CEBB5D922F45447A00A5E08D /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		CEBB5D952F454F1200A5E08D /* CardDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsViewController.swift; sourceTree = "<group>"; };
+		CEBB5D972F454F2700A5E08D /* CardDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsInteractor.swift; sourceTree = "<group>"; };
+		CEBB5D992F454F3800A5E08D /* CardDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsPresenter.swift; sourceTree = "<group>"; };
+		CEBB5D9B2F454F4700A5E08D /* CardDetailsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsBuilder.swift; sourceTree = "<group>"; };
+		CEBB5D9D2F454F5600A5E08D /* CardDetailsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsProvider.swift; sourceTree = "<group>"; };
+		CEBB5D9F2F454F6200A5E08D /* CardDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsView.swift; sourceTree = "<group>"; };
+		CEBB5DA12F45525C00A5E08D /* CardDetailsDataFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDetailsDataFlow.swift; sourceTree = "<group>"; };
+		CEBB5DA42F4558D000A5E08D /* TransactionDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsView.swift; sourceTree = "<group>"; };
+		CEBB5DA62F4558DB00A5E08D /* TransactionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsViewController.swift; sourceTree = "<group>"; };
+		CEBB5DA82F4558E800A5E08D /* TransactionDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsInteractor.swift; sourceTree = "<group>"; };
+		CEBB5DAA2F4558F300A5E08D /* TransactionDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsPresenter.swift; sourceTree = "<group>"; };
+		CEBB5DAC2F4558FF00A5E08D /* TransactionDetailsDataFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsDataFlow.swift; sourceTree = "<group>"; };
+		CEBB5DAE2F45590C00A5E08D /* TransactionDetailsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsProvider.swift; sourceTree = "<group>"; };
+		CEBB5DB02F45591D00A5E08D /* TransactionDetailsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsBuilder.swift; sourceTree = "<group>"; };
+		CEBB5DB32F45C7DE00A5E08D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CEBB5DB52F45C7EC00A5E08D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		CEBB5DB72F45C7F700A5E08D /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
+		CEBB5DB92F45C80300A5E08D /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		CEBB5DBB2F45C81100A5E08D /* SettingsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProvider.swift; sourceTree = "<group>"; };
+		CEBB5DBD2F45C81D00A5E08D /* SettingsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBuilder.swift; sourceTree = "<group>"; };
+		CEBB5DBF2F45C82900A5E08D /* SettingsDataFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDataFlow.swift; sourceTree = "<group>"; };
+		CEBB5DC22F45CFE000A5E08D /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		CEBB5DC42F45CFEB00A5E08D /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		CEBB5DC62F45CFF700A5E08D /* EditProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileInteractor.swift; sourceTree = "<group>"; };
+		CEBB5DC82F45D00100A5E08D /* EditProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePresenter.swift; sourceTree = "<group>"; };
+		CEBB5DCA2F45D00B00A5E08D /* EditProfileProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileProvider.swift; sourceTree = "<group>"; };
+		CEBB5DCC2F45D01800A5E08D /* EditProfileBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileBuilder.swift; sourceTree = "<group>"; };
+		CEBB5DCE2F45D02200A5E08D /* EditProfileDataFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileDataFlow.swift; sourceTree = "<group>"; };
+		CEBB5DD12F45D75000A5E08D /* AddCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardView.swift; sourceTree = "<group>"; };
+		CEBB5DD32F45D75F00A5E08D /* AddCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardViewController.swift; sourceTree = "<group>"; };
+		CEBB5DD52F45D76900A5E08D /* AddCardInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardInteractor.swift; sourceTree = "<group>"; };
+		CEBB5DD72F45D77200A5E08D /* AddCardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardPresenter.swift; sourceTree = "<group>"; };
+		CEBB5DD92F45D77C00A5E08D /* AddCardProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardProvider.swift; sourceTree = "<group>"; };
+		CEBB5DDB2F45D78600A5E08D /* AddCardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardBuilder.swift; sourceTree = "<group>"; };
+		CEBB5DDD2F45D79500A5E08D /* AddCardDataFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardDataFlow.swift; sourceTree = "<group>"; };
+		CEBB5DE02F45DCDA00A5E08D /* TransferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferView.swift; sourceTree = "<group>"; };
+		CEBB5DE22F45DCE300A5E08D /* TransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferViewController.swift; sourceTree = "<group>"; };
+		CEBB5DE42F45DD0500A5E08D /* TransferInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferInteractor.swift; sourceTree = "<group>"; };
+		CEBB5DE62F45DD1200A5E08D /* TransferPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferPresenter.swift; sourceTree = "<group>"; };
+		CEBB5DE82F45DD1C00A5E08D /* TransferProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferProvider.swift; sourceTree = "<group>"; };
+		CEBB5DEA2F45DD2800A5E08D /* TransferBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferBuilder.swift; sourceTree = "<group>"; };
+		CEBB5DEC2F45DD3300A5E08D /* TransferDataFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferDataFlow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +194,260 @@
 		CEBB5D352F44AA1B00A5E08D /* BetaBank */ = {
 			isa = PBXGroup;
 			children = (
+				CEBB5D912F45446400A5E08D /* DI */,
+				CEBB5D692F4504EB00A5E08D /* Storages */,
+				CEBB5D662F44FF9900A5E08D /* Domain */,
+				CEBB5D4C2F44E42800A5E08D /* Services */,
+				CEBB5D4B2F44E1D400A5E08D /* Coordinators */,
+				CEBB5D4A2F44E1B900A5E08D /* Components */,
 				CEBB5D362F44AA1B00A5E08D /* AppDelegate.swift */,
 				CEBB5D382F44AA1B00A5E08D /* SceneDelegate.swift */,
-				CEBB5D3A2F44AA1B00A5E08D /* ViewController.swift */,
 				CEBB5D3C2F44AA1B00A5E08D /* Main.storyboard */,
 				CEBB5D3F2F44AA1E00A5E08D /* Assets.xcassets */,
 				CEBB5D412F44AA1E00A5E08D /* LaunchScreen.storyboard */,
 				CEBB5D442F44AA1E00A5E08D /* Info.plist */,
 			);
 			path = BetaBank;
+			sourceTree = "<group>";
+		};
+		CEBB5D4A2F44E1B900A5E08D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5D542F44E47200A5E08D /* Transfer */,
+				CEBB5D532F44E46B00A5E08D /* AddCard */,
+				CEBB5D522F44E46200A5E08D /* EditProfile */,
+				CEBB5D512F44E45C00A5E08D /* Settings */,
+				CEBB5D502F44E45600A5E08D /* TransactionDetails */,
+				CEBB5D4F2F44E44100A5E08D /* CardDetails */,
+				CEBB5D4E2F44E43A00A5E08D /* Home */,
+				CEBB5D4D2F44E43200A5E08D /* Auth */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		CEBB5D4B2F44E1D400A5E08D /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5D552F44E48E00A5E08D /* MainCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		CEBB5D4C2F44E42800A5E08D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5D6C2F4506FE00A5E08D /* AuthService.swift */,
+				CEBB5D8B2F45388F00A5E08D /* UserService.swift */,
+				CEBB5D8D2F45389E00A5E08D /* TransactionService.swift */,
+				CEBB5D8F2F4538AC00A5E08D /* CardService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		CEBB5D4D2F44E43200A5E08D /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5D632F44EDAA00A5E08D /* View */,
+				CEBB5D572F44E4E300A5E08D /* AuthViewController.swift */,
+				CEBB5D592F44E59200A5E08D /* AuthInteractor.swift */,
+				CEBB5D5B2F44E61100A5E08D /* AuthPresenter.swift */,
+				CEBB5D5D2F44E68400A5E08D /* AuthBuilder.swift */,
+				CEBB5D672F4501F300A5E08D /* AuthProvider.swift */,
+				CEBB5D5F2F44EB6000A5E08D /* AuthDataFlow.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		CEBB5D4E2F44E43A00A5E08D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5D7C2F452B4700A5E08D /* View */,
+				CEBB5D7D2F452B5600A5E08D /* HomeViewController.swift */,
+				CEBB5D812F452C9500A5E08D /* HomeInteractor.swift */,
+				CEBB5D7F2F452C0B00A5E08D /* HomePresenter.swift */,
+				CEBB5D852F452DB200A5E08D /* HomeBuilder.swift */,
+				CEBB5D832F452D6700A5E08D /* HomeProvider.swift */,
+				CEBB5D872F452DF900A5E08D /* HomeDataFlow.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CEBB5D4F2F44E44100A5E08D /* CardDetails */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5D942F454EF400A5E08D /* View */,
+				CEBB5D952F454F1200A5E08D /* CardDetailsViewController.swift */,
+				CEBB5D972F454F2700A5E08D /* CardDetailsInteractor.swift */,
+				CEBB5D992F454F3800A5E08D /* CardDetailsPresenter.swift */,
+				CEBB5D9B2F454F4700A5E08D /* CardDetailsBuilder.swift */,
+				CEBB5D9D2F454F5600A5E08D /* CardDetailsProvider.swift */,
+				CEBB5DA12F45525C00A5E08D /* CardDetailsDataFlow.swift */,
+			);
+			path = CardDetails;
+			sourceTree = "<group>";
+		};
+		CEBB5D502F44E45600A5E08D /* TransactionDetails */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5DA32F4558BA00A5E08D /* View */,
+				CEBB5DA62F4558DB00A5E08D /* TransactionDetailsViewController.swift */,
+				CEBB5DA82F4558E800A5E08D /* TransactionDetailsInteractor.swift */,
+				CEBB5DAA2F4558F300A5E08D /* TransactionDetailsPresenter.swift */,
+				CEBB5DB02F45591D00A5E08D /* TransactionDetailsBuilder.swift */,
+				CEBB5DAE2F45590C00A5E08D /* TransactionDetailsProvider.swift */,
+				CEBB5DAC2F4558FF00A5E08D /* TransactionDetailsDataFlow.swift */,
+			);
+			path = TransactionDetails;
+			sourceTree = "<group>";
+		};
+		CEBB5D512F44E45C00A5E08D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5DB22F45C7A900A5E08D /* View */,
+				CEBB5DB32F45C7DE00A5E08D /* SettingsViewController.swift */,
+				CEBB5DB72F45C7F700A5E08D /* SettingsInteractor.swift */,
+				CEBB5DB92F45C80300A5E08D /* SettingsPresenter.swift */,
+				CEBB5DBD2F45C81D00A5E08D /* SettingsBuilder.swift */,
+				CEBB5DBB2F45C81100A5E08D /* SettingsProvider.swift */,
+				CEBB5DBF2F45C82900A5E08D /* SettingsDataFlow.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		CEBB5D522F44E46200A5E08D /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5DC12F45CFD300A5E08D /* View */,
+				CEBB5DC42F45CFEB00A5E08D /* EditProfileViewController.swift */,
+				CEBB5DC62F45CFF700A5E08D /* EditProfileInteractor.swift */,
+				CEBB5DC82F45D00100A5E08D /* EditProfilePresenter.swift */,
+				CEBB5DCC2F45D01800A5E08D /* EditProfileBuilder.swift */,
+				CEBB5DCA2F45D00B00A5E08D /* EditProfileProvider.swift */,
+				CEBB5DCE2F45D02200A5E08D /* EditProfileDataFlow.swift */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		CEBB5D532F44E46B00A5E08D /* AddCard */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5DD02F45D74000A5E08D /* View */,
+				CEBB5DD32F45D75F00A5E08D /* AddCardViewController.swift */,
+				CEBB5DD52F45D76900A5E08D /* AddCardInteractor.swift */,
+				CEBB5DD72F45D77200A5E08D /* AddCardPresenter.swift */,
+				CEBB5DDB2F45D78600A5E08D /* AddCardBuilder.swift */,
+				CEBB5DD92F45D77C00A5E08D /* AddCardProvider.swift */,
+				CEBB5DDD2F45D79500A5E08D /* AddCardDataFlow.swift */,
+			);
+			path = AddCard;
+			sourceTree = "<group>";
+		};
+		CEBB5D542F44E47200A5E08D /* Transfer */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5DDF2F45DCCE00A5E08D /* View */,
+				CEBB5DE22F45DCE300A5E08D /* TransferViewController.swift */,
+				CEBB5DE42F45DD0500A5E08D /* TransferInteractor.swift */,
+				CEBB5DE62F45DD1200A5E08D /* TransferPresenter.swift */,
+				CEBB5DEA2F45DD2800A5E08D /* TransferBuilder.swift */,
+				CEBB5DE82F45DD1C00A5E08D /* TransferProvider.swift */,
+				CEBB5DEC2F45DD3300A5E08D /* TransferDataFlow.swift */,
+			);
+			path = Transfer;
+			sourceTree = "<group>";
+		};
+		CEBB5D632F44EDAA00A5E08D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5D642F44FF2B00A5E08D /* AuthView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEBB5D662F44FF9900A5E08D /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5D722F450CC400A5E08D /* User.swift */,
+				CEBB5D762F450DDB00A5E08D /* Card.swift */,
+				CEBB5D7A2F450E2700A5E08D /* Transaction.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		CEBB5D692F4504EB00A5E08D /* Storages */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5D6A2F45050000A5E08D /* Storage.swift */,
+				CEBB5D6E2F450B4C00A5E08D /* StorageError.swift */,
+				CEBB5D702F450C9000A5E08D /* UserStorage.swift */,
+				CEBB5D742F450DCB00A5E08D /* CardStorage.swift */,
+				CEBB5D782F450E1000A5E08D /* TransactionStorage.swift */,
+			);
+			path = Storages;
+			sourceTree = "<group>";
+		};
+		CEBB5D7C2F452B4700A5E08D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5D892F4536ED00A5E08D /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEBB5D912F45446400A5E08D /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5D922F45447A00A5E08D /* DependencyContainer.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		CEBB5D942F454EF400A5E08D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5D9F2F454F6200A5E08D /* CardDetailsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEBB5DA32F4558BA00A5E08D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5DA42F4558D000A5E08D /* TransactionDetailsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEBB5DB22F45C7A900A5E08D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5DB52F45C7EC00A5E08D /* SettingsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEBB5DC12F45CFD300A5E08D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5DC22F45CFE000A5E08D /* EditProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEBB5DD02F45D74000A5E08D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5DD12F45D75000A5E08D /* AddCardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEBB5DDF2F45DCCE00A5E08D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEBB5DE02F45DCDA00A5E08D /* TransferView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +521,78 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEBB5D3B2F44AA1B00A5E08D /* ViewController.swift in Sources */,
+				CEBB5D9E2F454F5600A5E08D /* CardDetailsProvider.swift in Sources */,
+				CEBB5DB62F45C7EC00A5E08D /* SettingsView.swift in Sources */,
+				CEBB5D802F452C0B00A5E08D /* HomePresenter.swift in Sources */,
+				CEBB5DE72F45DD1200A5E08D /* TransferPresenter.swift in Sources */,
+				CEBB5D822F452C9500A5E08D /* HomeInteractor.swift in Sources */,
+				CEBB5DD82F45D77200A5E08D /* AddCardPresenter.swift in Sources */,
+				CEBB5DC72F45CFF700A5E08D /* EditProfileInteractor.swift in Sources */,
+				CEBB5D9A2F454F3900A5E08D /* CardDetailsPresenter.swift in Sources */,
+				CEBB5DC92F45D00100A5E08D /* EditProfilePresenter.swift in Sources */,
+				CEBB5DA52F4558D000A5E08D /* TransactionDetailsView.swift in Sources */,
+				CEBB5D8E2F45389E00A5E08D /* TransactionService.swift in Sources */,
+				CEBB5D8C2F45388F00A5E08D /* UserService.swift in Sources */,
+				CEBB5DBC2F45C81100A5E08D /* SettingsProvider.swift in Sources */,
+				CEBB5D882F452DF900A5E08D /* HomeDataFlow.swift in Sources */,
+				CEBB5DB42F45C7DE00A5E08D /* SettingsViewController.swift in Sources */,
+				CEBB5DA02F454F6200A5E08D /* CardDetailsView.swift in Sources */,
+				CEBB5DCB2F45D00B00A5E08D /* EditProfileProvider.swift in Sources */,
+				CEBB5DE32F45DCE300A5E08D /* TransferViewController.swift in Sources */,
+				CEBB5DBA2F45C80300A5E08D /* SettingsPresenter.swift in Sources */,
+				CEBB5D582F44E4E300A5E08D /* AuthViewController.swift in Sources */,
+				CEBB5D842F452D6700A5E08D /* HomeProvider.swift in Sources */,
+				CEBB5D6B2F45050000A5E08D /* Storage.swift in Sources */,
+				CEBB5D6F2F450B4C00A5E08D /* StorageError.swift in Sources */,
+				CEBB5DA72F4558DB00A5E08D /* TransactionDetailsViewController.swift in Sources */,
+				CEBB5D602F44EB6000A5E08D /* AuthDataFlow.swift in Sources */,
+				CEBB5DDE2F45D79500A5E08D /* AddCardDataFlow.swift in Sources */,
+				CEBB5D712F450C9000A5E08D /* UserStorage.swift in Sources */,
+				CEBB5D6D2F4506FE00A5E08D /* AuthService.swift in Sources */,
+				CEBB5DC02F45C82900A5E08D /* SettingsDataFlow.swift in Sources */,
+				CEBB5D772F450DDB00A5E08D /* Card.swift in Sources */,
+				CEBB5D682F4501F300A5E08D /* AuthProvider.swift in Sources */,
+				CEBB5DD62F45D76900A5E08D /* AddCardInteractor.swift in Sources */,
+				CEBB5D5A2F44E59200A5E08D /* AuthInteractor.swift in Sources */,
+				CEBB5DE92F45DD1C00A5E08D /* TransferProvider.swift in Sources */,
+				CEBB5D862F452DB200A5E08D /* HomeBuilder.swift in Sources */,
+				CEBB5D932F45447A00A5E08D /* DependencyContainer.swift in Sources */,
+				CEBB5DDA2F45D77C00A5E08D /* AddCardProvider.swift in Sources */,
+				CEBB5DA22F45525C00A5E08D /* CardDetailsDataFlow.swift in Sources */,
+				CEBB5D982F454F2700A5E08D /* CardDetailsInteractor.swift in Sources */,
+				CEBB5D732F450CC400A5E08D /* User.swift in Sources */,
+				CEBB5D8A2F4536ED00A5E08D /* HomeView.swift in Sources */,
 				CEBB5D372F44AA1B00A5E08D /* AppDelegate.swift in Sources */,
+				CEBB5DAF2F45590C00A5E08D /* TransactionDetailsProvider.swift in Sources */,
+				CEBB5DEB2F45DD2800A5E08D /* TransferBuilder.swift in Sources */,
+				CEBB5DC52F45CFEB00A5E08D /* EditProfileViewController.swift in Sources */,
+				CEBB5D7B2F450E2700A5E08D /* Transaction.swift in Sources */,
+				CEBB5DAD2F4558FF00A5E08D /* TransactionDetailsDataFlow.swift in Sources */,
+				CEBB5DE12F45DCDA00A5E08D /* TransferView.swift in Sources */,
+				CEBB5D962F454F1200A5E08D /* CardDetailsViewController.swift in Sources */,
 				CEBB5D392F44AA1B00A5E08D /* SceneDelegate.swift in Sources */,
+				CEBB5DBE2F45C81D00A5E08D /* SettingsBuilder.swift in Sources */,
+				CEBB5D752F450DCB00A5E08D /* CardStorage.swift in Sources */,
+				CEBB5DB12F45591D00A5E08D /* TransactionDetailsBuilder.swift in Sources */,
+				CEBB5DD42F45D75F00A5E08D /* AddCardViewController.swift in Sources */,
+				CEBB5DAB2F4558F300A5E08D /* TransactionDetailsPresenter.swift in Sources */,
+				CEBB5D5E2F44E68400A5E08D /* AuthBuilder.swift in Sources */,
+				CEBB5D902F4538AC00A5E08D /* CardService.swift in Sources */,
+				CEBB5DD22F45D75000A5E08D /* AddCardView.swift in Sources */,
+				CEBB5D7E2F452B5600A5E08D /* HomeViewController.swift in Sources */,
+				CEBB5D792F450E1000A5E08D /* TransactionStorage.swift in Sources */,
+				CEBB5D9C2F454F4700A5E08D /* CardDetailsBuilder.swift in Sources */,
+				CEBB5DA92F4558E800A5E08D /* TransactionDetailsInteractor.swift in Sources */,
+				CEBB5DCF2F45D02200A5E08D /* EditProfileDataFlow.swift in Sources */,
+				CEBB5DDC2F45D78600A5E08D /* AddCardBuilder.swift in Sources */,
+				CEBB5DED2F45DD3300A5E08D /* TransferDataFlow.swift in Sources */,
+				CEBB5D5C2F44E61100A5E08D /* AuthPresenter.swift in Sources */,
+				CEBB5D562F44E48E00A5E08D /* MainCoordinator.swift in Sources */,
+				CEBB5DE52F45DD0500A5E08D /* TransferInteractor.swift in Sources */,
+				CEBB5D652F44FF2B00A5E08D /* AuthView.swift in Sources */,
+				CEBB5DC32F45CFE000A5E08D /* EditProfileView.swift in Sources */,
+				CEBB5DB82F45C7F700A5E08D /* SettingsInteractor.swift in Sources */,
+				CEBB5DCD2F45D01800A5E08D /* EditProfileBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

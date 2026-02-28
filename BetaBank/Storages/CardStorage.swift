@@ -3,26 +3,51 @@ import Foundation
 protocol CardStorageProtocol: Storage where Entity == Card { }
 
 final class CardStorage: CardStorageProtocol {
-    typealias Entity = Card
 
-    func fetch(id: UUID) throws -> Card {
-        throw StorageError.incorrectId
+    private let fileName = "cards"
+    private let store: CodableStore
+    private var cards: [Card]
+
+    init(store: CodableStore) {
+        self.store = store
+        self.cards = store.load([Card].self, fileName: fileName, defaultValue: [])
     }
 
-    func fetchAll() throws -> [Card] {
-        throw StorageError.incorrectId
+    func fetch(id: UUID) -> Result<Card, Error> {
+        guard let card = cards.first(where: {$0.id == id}) else {
+            return .failure(StorageError.incorrectId)
+        }
+        return .success(card)
     }
 
-    func create(entity: Card) throws {
-        throw StorageError.incorrectId
+    func fetchAll() -> [Card] {
+        cards
     }
 
-    func delete(id: UUID) throws {
-        throw StorageError.incorrectId
+    func create(entity: Card) -> Result<Void, Error> {
+        guard !cards.contains(where: { $0.id == entity.id }) else {
+            return .failure(StorageError.existingEntity)
+        }
+
+        cards.append(entity)
+        return store.save(cards, fileName: fileName)
     }
 
-    func update(id: UUID, entity: Card) throws {
-        throw StorageError.incorrectId
+    func delete(id: UUID) -> Result<Void, Error> {
+        guard let index = cards.firstIndex(where: {$0.id == id}) else {
+            return .failure(StorageError.incorrectId)
+        }
+
+        cards.remove(at: index)
+        return store.save(cards, fileName: fileName)
+    }
+
+    func update(id: UUID, entity: Card) -> Result<Void, Error> {
+        guard let index = cards.firstIndex(where: {$0.id == id}) else {
+            return .failure(StorageError.incorrectId)
+        }
+
+        cards[index] = entity
+        return store.save(cards, fileName: fileName)
     }
 }
-

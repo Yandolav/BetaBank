@@ -12,7 +12,7 @@ final class HomeBuilder: HomeBuilderProtocol {
             transactionService: dependencyContainer.getTransactionService()
         )
 
-        let viewController = HomeViewController()
+        let viewController = HomeViewController(currentUserId: userId)
         let interactor = HomeInteractor(provider: provider)
         let presenter = HomePresenter()
 

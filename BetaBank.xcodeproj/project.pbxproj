@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE765BA02F4E253C009BE102 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765B9F2F4E253C009BE102 /* InputTextField.swift */; };
+		CE765BA32F4E32C1009BE102 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765BA22F4E32C1009BE102 /* Theme.swift */; };
+		CE765BA72F5077D2009BE102 /* MainAppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765BA62F5077D1009BE102 /* MainAppButton.swift */; };
+		CE765BA92F523D35009BE102 /* FileDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765BA82F523D35009BE102 /* FileDataStore.swift */; };
 		CEBB5D372F44AA1B00A5E08D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D362F44AA1B00A5E08D /* AppDelegate.swift */; };
 		CEBB5D392F44AA1B00A5E08D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D382F44AA1B00A5E08D /* SceneDelegate.swift */; };
-		CEBB5D3E2F44AA1B00A5E08D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBB5D3C2F44AA1B00A5E08D /* Main.storyboard */; };
 		CEBB5D402F44AA1E00A5E08D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBB5D3F2F44AA1E00A5E08D /* Assets.xcassets */; };
 		CEBB5D432F44AA1E00A5E08D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBB5D412F44AA1E00A5E08D /* LaunchScreen.storyboard */; };
 		CEBB5D562F44E48E00A5E08D /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D552F44E48E00A5E08D /* MainCoordinator.swift */; };
@@ -85,10 +88,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE765B9F2F4E253C009BE102 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
+		CE765BA22F4E32C1009BE102 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		CE765BA62F5077D1009BE102 /* MainAppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppButton.swift; sourceTree = "<group>"; };
+		CE765BA82F523D35009BE102 /* FileDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataStore.swift; sourceTree = "<group>"; };
 		CEBB5D332F44AA1B00A5E08D /* BetaBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetaBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEBB5D362F44AA1B00A5E08D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEBB5D382F44AA1B00A5E08D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CEBB5D3D2F44AA1B00A5E08D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CEBB5D3F2F44AA1E00A5E08D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEBB5D422F44AA1E00A5E08D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CEBB5D442F44AA1E00A5E08D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -175,6 +181,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE765B9D2F4E245B009BE102 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CE765BA12F4E3282009BE102 /* DesignSystem */,
+				CE765B9E2F4E2470009BE102 /* UIComponents */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		CE765B9E2F4E2470009BE102 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				CE765B9F2F4E253C009BE102 /* InputTextField.swift */,
+				CE765BA62F5077D1009BE102 /* MainAppButton.swift */,
+			);
+			path = UIComponents;
+			sourceTree = "<group>";
+		};
+		CE765BA12F4E3282009BE102 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				CE765BA22F4E32C1009BE102 /* Theme.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
 		CEBB5D2A2F44AA1B00A5E08D = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +226,7 @@
 		CEBB5D352F44AA1B00A5E08D /* BetaBank */ = {
 			isa = PBXGroup;
 			children = (
+				CE765B9D2F4E245B009BE102 /* Shared */,
 				CEBB5D912F45446400A5E08D /* DI */,
 				CEBB5D692F4504EB00A5E08D /* Storages */,
 				CEBB5D662F44FF9900A5E08D /* Domain */,
@@ -202,7 +235,6 @@
 				CEBB5D4A2F44E1B900A5E08D /* Components */,
 				CEBB5D362F44AA1B00A5E08D /* AppDelegate.swift */,
 				CEBB5D382F44AA1B00A5E08D /* SceneDelegate.swift */,
-				CEBB5D3C2F44AA1B00A5E08D /* Main.storyboard */,
 				CEBB5D3F2F44AA1E00A5E08D /* Assets.xcassets */,
 				CEBB5D412F44AA1E00A5E08D /* LaunchScreen.storyboard */,
 				CEBB5D442F44AA1E00A5E08D /* Info.plist */,
@@ -382,6 +414,7 @@
 				CEBB5D702F450C9000A5E08D /* UserStorage.swift */,
 				CEBB5D742F450DCB00A5E08D /* CardStorage.swift */,
 				CEBB5D782F450E1000A5E08D /* TransactionStorage.swift */,
+				CE765BA82F523D35009BE102 /* FileDataStore.swift */,
 			);
 			path = Storages;
 			sourceTree = "<group>";
@@ -510,7 +543,6 @@
 			files = (
 				CEBB5D432F44AA1E00A5E08D /* LaunchScreen.storyboard in Resources */,
 				CEBB5D402F44AA1E00A5E08D /* Assets.xcassets in Resources */,
-				CEBB5D3E2F44AA1B00A5E08D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,10 +557,12 @@
 				CEBB5DB62F45C7EC00A5E08D /* SettingsView.swift in Sources */,
 				CEBB5D802F452C0B00A5E08D /* HomePresenter.swift in Sources */,
 				CEBB5DE72F45DD1200A5E08D /* TransferPresenter.swift in Sources */,
+				CE765BA02F4E253C009BE102 /* InputTextField.swift in Sources */,
 				CEBB5D822F452C9500A5E08D /* HomeInteractor.swift in Sources */,
 				CEBB5DD82F45D77200A5E08D /* AddCardPresenter.swift in Sources */,
 				CEBB5DC72F45CFF700A5E08D /* EditProfileInteractor.swift in Sources */,
 				CEBB5D9A2F454F3900A5E08D /* CardDetailsPresenter.swift in Sources */,
+				CE765BA92F523D35009BE102 /* FileDataStore.swift in Sources */,
 				CEBB5DC92F45D00100A5E08D /* EditProfilePresenter.swift in Sources */,
 				CEBB5DA52F4558D000A5E08D /* TransactionDetailsView.swift in Sources */,
 				CEBB5D8E2F45389E00A5E08D /* TransactionService.swift in Sources */,
@@ -559,6 +593,7 @@
 				CEBB5D932F45447A00A5E08D /* DependencyContainer.swift in Sources */,
 				CEBB5DDA2F45D77C00A5E08D /* AddCardProvider.swift in Sources */,
 				CEBB5DA22F45525C00A5E08D /* CardDetailsDataFlow.swift in Sources */,
+				CE765BA32F4E32C1009BE102 /* Theme.swift in Sources */,
 				CEBB5D982F454F2700A5E08D /* CardDetailsInteractor.swift in Sources */,
 				CEBB5D732F450CC400A5E08D /* User.swift in Sources */,
 				CEBB5D8A2F4536ED00A5E08D /* HomeView.swift in Sources */,
@@ -581,6 +616,7 @@
 				CEBB5DD22F45D75000A5E08D /* AddCardView.swift in Sources */,
 				CEBB5D7E2F452B5600A5E08D /* HomeViewController.swift in Sources */,
 				CEBB5D792F450E1000A5E08D /* TransactionStorage.swift in Sources */,
+				CE765BA72F5077D2009BE102 /* MainAppButton.swift in Sources */,
 				CEBB5D9C2F454F4700A5E08D /* CardDetailsBuilder.swift in Sources */,
 				CEBB5DA92F4558E800A5E08D /* TransactionDetailsInteractor.swift in Sources */,
 				CEBB5DCF2F45D02200A5E08D /* EditProfileDataFlow.swift in Sources */,
@@ -599,14 +635,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CEBB5D3C2F44AA1B00A5E08D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CEBB5D3D2F44AA1B00A5E08D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CEBB5D412F44AA1E00A5E08D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -749,7 +777,6 @@
 				INFOPLIST_FILE = BetaBank/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -777,7 +804,6 @@
 				INFOPLIST_FILE = BetaBank/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

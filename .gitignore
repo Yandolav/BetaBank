@@ -1,2 +1,4 @@
 *.xcodeproj/xcuserdata/
 *.xcuserstate
+DerivedData/
+/DerivedData

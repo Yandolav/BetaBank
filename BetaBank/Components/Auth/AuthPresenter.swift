@@ -1,3 +1,5 @@
+import Foundation
+
 protocol AuthPresenterInput: AnyObject {
     func presentSignInResult(response: Auth.SignIn.Response)
     func presentSignUpResult(response: Auth.SignUp.Response)
@@ -14,27 +16,28 @@ final class AuthPresenter {
     // MARK: Public properties
 
     weak var viewController: AuthPresenterOutput?
-}
 
-// MARK: - AuthPresenterInput
+    // MARK: Private properties
 
-extension AuthPresenter: AuthPresenterInput {
-    func presentSignInResult(response: Auth.SignIn.Response) {
-        switch response.result {
+    private func authHandle(result: Result<UUID, Error>) {
+        switch result {
         case .success(let userId):
             viewController?.showHomeScreen(userId: userId)
         case .failure(let error):
             viewController?.displaySignInResult(viewModel: .init(state: .error(message: error.localizedDescription)))
         }
     }
+}
+
+// MARK: - AuthPresenterInput
+
+extension AuthPresenter: AuthPresenterInput {
+    func presentSignInResult(response: Auth.SignIn.Response) {
+        self.authHandle(result: response.result)
+    }
 
     func presentSignUpResult(response: Auth.SignUp.Response) {
-        switch response.result {
-        case .success(let userId):
-            viewController?.showHomeScreen(userId: userId)
-        case .failure(let error):
-            viewController?.displaySignUpResult(viewModel: .init(state: .error(message: error.localizedDescription)))
-        }
+        self.authHandle(result: response.result)
     }
 
     func presentFirstNameValidate(response: Auth.FirstNameValidate.Response) {

@@ -16,7 +16,8 @@ class MainCoordinator: Coordinator {
 
     // MARK: Private properties
 
-    private var navigationController: UINavigationController
+    private let navigationController: UINavigationController
+    private let dependencyContainer: DependencyContainer = DependencyContainer()
 
     // MARK: Init
 
@@ -27,11 +28,15 @@ class MainCoordinator: Coordinator {
     // MARK: Public properties
 
     func start() {
-        // code
+        let viewController = AuthBuilder().build(dependencyContainer: dependencyContainer)
+        viewController.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
     }
 
     func showHomeScreen(userId: UUID) {
-        // code
+        let viewController = HomeViewController(currentUserId: userId)
+        viewController.coordinator = self
+        navigationController.setViewControllers([viewController], animated: true)
     }
 
     func showCardDetails(cardId: UUID) {

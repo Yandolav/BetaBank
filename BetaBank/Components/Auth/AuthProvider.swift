@@ -2,13 +2,16 @@ import Foundation
 
 protocol AuthProviderProtocol {
     func signIn(email: String, password: String) -> Result<UUID, Error>
-
     func signUp(
         firstName: String,
         lastName: String,
         email: String,
         password: String
     ) -> Result<UUID, Error>
+    func firstNameValidate(firstName: String) -> Result<Void, Error>
+    func lastNameValidate(lastName: String) -> Result<Void, Error>
+    func emailValidate(email: String) -> Result<Void, Error>
+    func passwordValidate(password: String) -> Result<Void, Error>
 }
 
 final class AuthProvider {
@@ -27,8 +30,9 @@ final class AuthProvider {
 // MARK: - AuthProviderProtocol
 
 extension AuthProvider: AuthProviderProtocol {
+
     func signIn(email: String, password: String) -> Result<UUID, Error> {
-        .success(UUID())
+        authService.signIn(email: email, password: password)
     }
 
     func signUp(
@@ -37,6 +41,22 @@ extension AuthProvider: AuthProviderProtocol {
         email: String,
         password: String
     ) -> Result<UUID, Error> {
-        .success(UUID())
+        authService.signUp(firstName: firstName, lastName: lastName, email: email, password: password)
+    }
+
+    func firstNameValidate(firstName: String) -> Result<Void, Error> {
+        authService.firstNameTextFieldValidate(firstName: firstName)
+    }
+
+    func lastNameValidate(lastName: String) -> Result<Void, Error> {
+        authService.lastNameTextFieldValidate(lastName: lastName)
+    }
+
+    func emailValidate(email: String) -> Result<Void, Error> {
+        authService.emailTextFieldValidate(email: email)
+    }
+
+    func passwordValidate(password: String) -> Result<Void, Error> {
+        authService.passwordTextFieldValidate(password: password)
     }
 }

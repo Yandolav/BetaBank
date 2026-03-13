@@ -3,9 +3,9 @@ import Foundation
 protocol Storage {
     associatedtype Entity
 
-    func fetch(id: UUID) throws -> Entity
-    func fetchAll() throws -> [Entity]
-    func create(entity: Entity) throws
-    func delete(id: UUID) throws
-    func update(id: UUID, entity: Entity) throws
+    func fetch(id: UUID) -> Result<Entity, Error>
+    func fetchAll() -> [Entity]
+    func create(entity: Entity) -> Result<Void, Error>
+    func delete(id: UUID) -> Result<Void, Error>
+    func update(id: UUID, entity: Entity) -> Result<Void, Error>
 }

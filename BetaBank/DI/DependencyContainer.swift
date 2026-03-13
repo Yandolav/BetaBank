@@ -10,9 +10,11 @@ final class DependencyContainer {
     // MARK: Init
 
     init() {
-        let userStorage = UserStorage()
-        let cardStorage = CardStorage()
-        let transactionStorage = TransactionStorage()
+        let store = FileDataStore()
+
+        let userStorage = UserStorage(store: store)
+        let cardStorage = CardStorage(store: store)
+        let transactionStorage = TransactionStorage(store: store)
 
         self.authService = AuthService(storage: userStorage)
         self.userService = UserService(userStorage: userStorage)

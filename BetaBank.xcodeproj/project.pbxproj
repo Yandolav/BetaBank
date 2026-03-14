@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B142FAF2F65DE4A00FB0338 /* TitlesStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B142FAE2F65DE3000FB0338 /* TitlesStack.swift */; };
+		9B142FB12F65E35E00FB0338 /* InfoStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B142FB02F65E30B00FB0338 /* InfoStack.swift */; };
+		9B142FB32F65E9A300FB0338 /* TextFieldsStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B142FB22F65E99B00FB0338 /* TextFieldsStack.swift */; };
+		9B142FB52F65F78900FB0338 /* SubmitStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B142FB42F65F77B00FB0338 /* SubmitStack.swift */; };
 		CE765BA02F4E253C009BE102 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765B9F2F4E253C009BE102 /* InputTextField.swift */; };
 		CE765BA32F4E32C1009BE102 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765BA22F4E32C1009BE102 /* Theme.swift */; };
 		CE765BA72F5077D2009BE102 /* MainAppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765BA62F5077D1009BE102 /* MainAppButton.swift */; };
@@ -88,6 +92,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B142FAE2F65DE3000FB0338 /* TitlesStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesStack.swift; sourceTree = "<group>"; };
+		9B142FB02F65E30B00FB0338 /* InfoStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStack.swift; sourceTree = "<group>"; };
+		9B142FB22F65E99B00FB0338 /* TextFieldsStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldsStack.swift; sourceTree = "<group>"; };
+		9B142FB42F65F77B00FB0338 /* SubmitStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitStack.swift; sourceTree = "<group>"; };
 		CE765B9F2F4E253C009BE102 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		CE765BA22F4E32C1009BE102 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		CE765BA62F5077D1009BE102 /* MainAppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppButton.swift; sourceTree = "<group>"; };
@@ -181,6 +189,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B142FAD2F65DE2300FB0338 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				9B142FB42F65F77B00FB0338 /* SubmitStack.swift */,
+				9B142FB22F65E99B00FB0338 /* TextFieldsStack.swift */,
+				9B142FB02F65E30B00FB0338 /* InfoStack.swift */,
+				9B142FAE2F65DE3000FB0338 /* TitlesStack.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		CE765B9D2F4E245B009BE102 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +410,7 @@
 		CEBB5D632F44EDAA00A5E08D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9B142FAD2F65DE2300FB0338 /* Subviews */,
 				CEBB5D642F44FF2B00A5E08D /* AuthView.swift */,
 			);
 			path = View;
@@ -580,11 +600,13 @@
 				CEBB5D6F2F450B4C00A5E08D /* StorageError.swift in Sources */,
 				CEBB5DA72F4558DB00A5E08D /* TransactionDetailsViewController.swift in Sources */,
 				CEBB5D602F44EB6000A5E08D /* AuthDataFlow.swift in Sources */,
+				9B142FB32F65E9A300FB0338 /* TextFieldsStack.swift in Sources */,
 				CEBB5DDE2F45D79500A5E08D /* AddCardDataFlow.swift in Sources */,
 				CEBB5D712F450C9000A5E08D /* UserStorage.swift in Sources */,
 				CEBB5D6D2F4506FE00A5E08D /* AuthService.swift in Sources */,
 				CEBB5DC02F45C82900A5E08D /* SettingsDataFlow.swift in Sources */,
 				CEBB5D772F450DDB00A5E08D /* Card.swift in Sources */,
+				9B142FB12F65E35E00FB0338 /* InfoStack.swift in Sources */,
 				CEBB5D682F4501F300A5E08D /* AuthProvider.swift in Sources */,
 				CEBB5DD62F45D76900A5E08D /* AddCardInteractor.swift in Sources */,
 				CEBB5D5A2F44E59200A5E08D /* AuthInteractor.swift in Sources */,
@@ -605,12 +627,14 @@
 				CEBB5DAD2F4558FF00A5E08D /* TransactionDetailsDataFlow.swift in Sources */,
 				CEBB5DE12F45DCDA00A5E08D /* TransferView.swift in Sources */,
 				CEBB5D962F454F1200A5E08D /* CardDetailsViewController.swift in Sources */,
+				9B142FB52F65F78900FB0338 /* SubmitStack.swift in Sources */,
 				CEBB5D392F44AA1B00A5E08D /* SceneDelegate.swift in Sources */,
 				CEBB5DBE2F45C81D00A5E08D /* SettingsBuilder.swift in Sources */,
 				CEBB5D752F450DCB00A5E08D /* CardStorage.swift in Sources */,
 				CEBB5DB12F45591D00A5E08D /* TransactionDetailsBuilder.swift in Sources */,
 				CEBB5DD42F45D75F00A5E08D /* AddCardViewController.swift in Sources */,
 				CEBB5DAB2F4558F300A5E08D /* TransactionDetailsPresenter.swift in Sources */,
+				9B142FAF2F65DE4A00FB0338 /* TitlesStack.swift in Sources */,
 				CEBB5D5E2F44E68400A5E08D /* AuthBuilder.swift in Sources */,
 				CEBB5D902F4538AC00A5E08D /* CardService.swift in Sources */,
 				CEBB5DD22F45D75000A5E08D /* AddCardView.swift in Sources */,

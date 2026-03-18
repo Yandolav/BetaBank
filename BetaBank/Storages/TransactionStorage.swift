@@ -50,4 +50,11 @@ final class TransactionStorage: TransactionStorageProtocol {
         transactions[index] = entity
         return store.save(transactions, fileName: fileName)
     }
+
+    func upsert(entity: Transaction) -> Result<Void, Error> {
+        switch fetch(id: entity.id) {
+        case .success: return update(id: entity.id, entity: entity)
+        case .failure: return create(entity: entity)
+        }
+    }
 }

@@ -1,13 +1,13 @@
 import Foundation
 
 protocol AuthProviderProtocol {
-    func signIn(email: String, password: String) -> Result<UUID, Error>
+    func signIn(email: String, password: String) async -> Result<UUID, Error>
     func signUp(
         firstName: String,
         lastName: String,
         email: String,
         password: String
-    ) -> Result<UUID, Error>
+    ) async -> Result<UUID, Error>
     func firstNameValidate(firstName: String) -> Result<Void, Error>
     func lastNameValidate(lastName: String) -> Result<Void, Error>
     func emailValidate(email: String) -> Result<Void, Error>
@@ -31,8 +31,8 @@ final class AuthProvider {
 
 extension AuthProvider: AuthProviderProtocol {
 
-    func signIn(email: String, password: String) -> Result<UUID, Error> {
-        authService.signIn(email: email, password: password)
+    func signIn(email: String, password: String) async -> Result<UUID, Error> {
+        await authService.signIn(email: email, password: password)
     }
 
     func signUp(
@@ -40,8 +40,8 @@ extension AuthProvider: AuthProviderProtocol {
         lastName: String,
         email: String,
         password: String
-    ) -> Result<UUID, Error> {
-        authService.signUp(firstName: firstName, lastName: lastName, email: email, password: password)
+    ) async -> Result<UUID, Error> {
+        await authService.signUp(firstName: firstName, lastName: lastName, email: email, password: password)
     }
 
     func firstNameValidate(firstName: String) -> Result<Void, Error> {

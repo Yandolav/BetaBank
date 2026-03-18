@@ -22,9 +22,9 @@ enum Home {
     }
 
     enum ViewControllerState {
-        case initial
         case loading
-        case content(user: User, cards: [Card], transactions: [Transaction])
+        case empty
+        case content(user: User, cards: [CardCellViewModel], transactions: [TransactionCellViewModel])
         case error(message: String)
     }
 }

@@ -2,19 +2,19 @@ import UIKit
 
 protocol AuthViewDelegate: AnyObject {
     func didTapSignIn(
-        email: String,
-        password: String
+        email: String?,
+        password: String?
     )
     func didTapSignUp(
-        firstName: String,
-        lastName: String,
-        email: String,
-        password: String
+        firstName: String?,
+        lastName: String?,
+        email: String?,
+        password: String?
     )
-    func firstNameTextFieldValidate(text: String)
-    func lastNameTextFieldValidate(text: String)
-    func emailTextFieldValidate(text: String)
-    func passwordTextFieldValidate(text: String)
+    func firstNameTextFieldValidate(text: String?)
+    func lastNameTextFieldValidate(text: String?)
+    func emailTextFieldValidate(text: String?)
+    func passwordTextFieldValidate(text: String?)
 }
 
 final class AuthView: UIView {
@@ -302,19 +302,19 @@ extension AuthView: InfoStackDelegate {
 // MARK: - TextFieldsStackDelegate
 
 extension AuthView: TextFieldsStackDelegate {
-    func firstNameTextFieldValidate(text: String) {
+    func firstNameTextFieldValidate(text: String?) {
         delegate?.firstNameTextFieldValidate(text: text)
     }
 
-    func lastNameTextFieldValidate(text: String) {
+    func lastNameTextFieldValidate(text: String?) {
         delegate?.lastNameTextFieldValidate(text: text)
     }
     
-    func emailTextFieldValidate(text: String) {
+    func emailTextFieldValidate(text: String?) {
         delegate?.emailTextFieldValidate(text: text)
     }
     
-    func passwordTextFieldValidate(text: String) {
+    func passwordTextFieldValidate(text: String?) {
         delegate?.passwordTextFieldValidate(text: text)
     }
     

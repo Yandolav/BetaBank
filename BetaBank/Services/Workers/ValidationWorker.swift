@@ -2,21 +2,24 @@ import Foundation
 
 final class ValidationWorker {
 
-    func validateFirstName(_ value: String) -> Result<Void, Error> {
+    func validateFirstName(_ value: String?) -> Result<Void, Error> {
+        guard let value else { return .failure(ValidationError.invalidFirstName) }
         let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return .failure(ValidationError.invalidFirstName) }
         guard trimmed.allSatisfy({ $0.isLetter }) else { return .failure(ValidationError.invalidFirstName) }
         return .success(())
     }
 
-    func validateLastName(_ value: String) -> Result<Void, Error> {
+    func validateLastName(_ value: String?) -> Result<Void, Error> {
+        guard let value else { return .failure(ValidationError.invalidLastName) }
         let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return .failure(ValidationError.invalidLastName) }
         guard trimmed.allSatisfy({ $0.isLetter }) else { return .failure(ValidationError.invalidLastName) }
         return .success(())
     }
 
-    func validateEmail(_ value: String) -> Result<Void, Error> {
+    func validateEmail(_ value: String?) -> Result<Void, Error> {
+        guard let value else { return .failure(ValidationError.invalidEmail) }
         let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return .failure(ValidationError.invalidEmail) }
         let pattern = #"^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z]{2,}$"#
@@ -25,7 +28,8 @@ final class ValidationWorker {
         return .success(())
     }
 
-    func validatePassword(_ value: String) -> Result<Void, Error> {
+    func validatePassword(_ value: String?) -> Result<Void, Error> {
+        guard let value else { return .failure(ValidationError.invalidPassword) }
         let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return .failure(ValidationError.invalidPassword) }
 
@@ -49,7 +53,8 @@ final class ValidationWorker {
         return .success(())
     }
 
-    func validatePhone(_ value: String) -> Result<Void, Error> {
+    func validatePhone(_ value: String?) -> Result<Void, Error> {
+        guard let value else { return .failure(ValidationError.invalidPhone) }
         let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return .failure(ValidationError.invalidPhone) }
         let pattern = #"^\+?[0-9]{10,15}$"#

@@ -3,8 +3,8 @@ import Foundation
 enum Auth {
     enum SignIn {
         struct Request {
-            let password: String
-            let email: String
+            let password: String?
+            let email: String?
         }
 
         struct Response {
@@ -18,10 +18,10 @@ enum Auth {
 
     enum SignUp {
         struct Request {
-            let firstName: String
-            let lastName: String
-            let password: String
-            let email: String
+            let firstName: String?
+            let lastName: String?
+            let password: String?
+            let email: String?
         }
 
         struct Response {
@@ -35,7 +35,7 @@ enum Auth {
 
     enum FirstNameValidate {
         struct Request {
-            let firstName: String
+            let firstName: String?
         }
 
         struct Response {
@@ -49,7 +49,7 @@ enum Auth {
 
     enum LastNameValidate {
         struct Request {
-            let lastName: String
+            let lastName: String?
         }
 
         struct Response {
@@ -63,7 +63,7 @@ enum Auth {
 
     enum EmailValidate {
         struct Request {
-            let email: String
+            let email: String?
         }
 
         struct Response {
@@ -77,7 +77,7 @@ enum Auth {
 
     enum PasswordValidate {
         struct Request {
-            let password: String
+            let password: String?
         }
 
         struct Response {

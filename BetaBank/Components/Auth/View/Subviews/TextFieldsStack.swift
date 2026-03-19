@@ -1,10 +1,10 @@
 import UIKit
 
 protocol TextFieldsStackDelegate: AnyObject {
-    func firstNameTextFieldValidate(text: String)
-    func emailTextFieldValidate(text: String)
-    func lastNameTextFieldValidate(text: String)
-    func passwordTextFieldValidate(text: String)
+    func firstNameTextFieldValidate(text: String?)
+    func emailTextFieldValidate(text: String?)
+    func lastNameTextFieldValidate(text: String?)
+    func passwordTextFieldValidate(text: String?)
     func sumbit()
 }
 
@@ -14,19 +14,19 @@ final class TextFieldsStack: UIView {
 
     weak var delegate: TextFieldsStackDelegate?
 
-    var firstNameTextFieldText: String {
+    var firstNameTextFieldText: String? {
         firstNameTextField.textFieldText
     }
 
-    var lastNameTextFieldText: String {
+    var lastNameTextFieldText: String? {
         lastNameTextField.textFieldText
     }
 
-    var emailTextFieldText: String {
+    var emailTextFieldText: String? {
         emailTextField.textFieldText
     }
 
-    var passwordTextFieldText: String {
+    var passwordTextFieldText: String? {
         passwordTextField.textFieldText
     }
 

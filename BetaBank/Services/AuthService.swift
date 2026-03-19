@@ -1,12 +1,12 @@
 import Foundation
 
 protocol AuthServiceProtocol {
-    func signIn(email: String, password: String) async -> Result<UUID, Error>
-    func signUp(firstName: String, lastName: String, email: String, password: String) async -> Result<UUID, Error>
-    func firstNameTextFieldValidate(firstName: String) -> Result<Void, Error>
-    func lastNameTextFieldValidate(lastName: String) -> Result<Void, Error>
-    func emailTextFieldValidate(email: String) -> Result<Void, Error>
-    func passwordTextFieldValidate(password: String) -> Result<Void, Error>
+    func signIn(email: String?, password: String?) async -> Result<UUID, Error>
+    func signUp(firstName: String?, lastName: String?, email: String?, password: String?) async -> Result<UUID, Error>
+    func firstNameTextFieldValidate(firstName: String?) -> Result<Void, Error>
+    func lastNameTextFieldValidate(lastName: String?) -> Result<Void, Error>
+    func emailTextFieldValidate(email: String?) -> Result<Void, Error>
+    func passwordTextFieldValidate(password: String?) -> Result<Void, Error>
 }
 
 final class AuthService {
@@ -28,7 +28,7 @@ final class AuthService {
 
 extension AuthService: AuthServiceProtocol {
 
-    func signIn(email: String, password: String) async -> Result<UUID, Error> {
+    func signIn(email: String?, password: String?) async -> Result<UUID, Error> {
         let result = await networkService.getAllUsers()
 
         switch result {
@@ -46,15 +46,19 @@ extension AuthService: AuthServiceProtocol {
     }
 
     func signUp(
-        firstName: String,
-        lastName: String,
-        email: String,
-        password: String
+        firstName: String?,
+        lastName: String?,
+        email: String?,
+        password: String?
     ) async -> Result<UUID, Error> {
         if case .failure(let error) = validator.validateFirstName(firstName) { return .failure(error) }
         if case .failure(let error) = validator.validateLastName(lastName) { return .failure(error) }
         if case .failure(let error) = validator.validateEmail(email) { return .failure(error) }
         if case .failure(let error) = validator.validatePassword(password) { return .failure(error) }
+
+        guard let firstName, let lastName, let email, let password else {
+            return .failure(AuthError.failedToSaveUser)
+        }
 
         let listResult = await networkService.getAllUsers()
         if case .success(let dtos) = listResult {
@@ -81,19 +85,19 @@ extension AuthService: AuthServiceProtocol {
         }
     }
 
-    func firstNameTextFieldValidate(firstName: String) -> Result<Void, Error> {
+    func firstNameTextFieldValidate(firstName: String?) -> Result<Void, Error> {
         validator.validateFirstName(firstName)
     }
 
-    func lastNameTextFieldValidate(lastName: String) -> Result<Void, Error> {
+    func lastNameTextFieldValidate(lastName: String?) -> Result<Void, Error> {
         validator.validateLastName(lastName)
     }
 
-    func emailTextFieldValidate(email: String) -> Result<Void, Error> {
+    func emailTextFieldValidate(email: String?) -> Result<Void, Error> {
         validator.validateEmail(email)
     }
 
-    func passwordTextFieldValidate(password: String) -> Result<Void, Error> {
+    func passwordTextFieldValidate(password: String?) -> Result<Void, Error> {
         validator.validatePassword(password)
     }
 }

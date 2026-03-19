@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B142FAF2F65DE4A00FB0338 /* TitlesStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B142FAE2F65DE3000FB0338 /* TitlesStack.swift */; };
+		9B142FB12F65E35E00FB0338 /* InfoStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B142FB02F65E30B00FB0338 /* InfoStack.swift */; };
+		9B142FB32F65E9A300FB0338 /* TextFieldsStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B142FB22F65E99B00FB0338 /* TextFieldsStack.swift */; };
+		9B142FB52F65F78900FB0338 /* SubmitStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B142FB42F65F77B00FB0338 /* SubmitStack.swift */; };
 		CE765BA02F4E253C009BE102 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765B9F2F4E253C009BE102 /* InputTextField.swift */; };
 		CE765BA32F4E32C1009BE102 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765BA22F4E32C1009BE102 /* Theme.swift */; };
 		CE765BA72F5077D2009BE102 /* MainAppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765BA62F5077D1009BE102 /* MainAppButton.swift */; };
@@ -85,9 +89,26 @@
 		CEBB5DE92F45DD1C00A5E08D /* TransferProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DE82F45DD1C00A5E08D /* TransferProvider.swift */; };
 		CEBB5DEB2F45DD2800A5E08D /* TransferBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DEA2F45DD2800A5E08D /* TransferBuilder.swift */; };
 		CEBB5DED2F45DD3300A5E08D /* TransferDataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DEC2F45DD3300A5E08D /* TransferDataFlow.swift */; };
+		F35966DA2F6A11C200A6A85A /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35966D92F6A11C100A6A85A /* NetworkError.swift */; };
+		F35966DC2F6A11D200A6A85A /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35966DB2F6A11CB00A6A85A /* NetworkClient.swift */; };
+		F35966E02F6A15F500A6A85A /* UserNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35966DF2F6A15F300A6A85A /* UserNetworkService.swift */; };
+		F35966E22F6A161900A6A85A /* CardNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35966E12F6A161600A6A85A /* CardNetworkService.swift */; };
+		F35966E42F6A163300A6A85A /* TransactionNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35966E32F6A163100A6A85A /* TransactionNetworkService.swift */; };
+		F35966EC2F6B0C6000A6A85A /* SessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35966EB2F6B0C5200A6A85A /* SessionExtension.swift */; };
+		F35966EE2F6B1CDE00A6A85A /* UserDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35966ED2F6B1CD700A6A85A /* UserDTO.swift */; };
+		F35966F02F6B1D3C00A6A85A /* CardDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35966EF2F6B1D3800A6A85A /* CardDTO.swift */; };
+		F35966F22F6B1F1D00A6A85A /* TransactionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35966F12F6B1F1C00A6A85A /* TransactionDTO.swift */; };
+		F35966F52F6B2D2700A6A85A /* ValidationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35966F42F6B2D2600A6A85A /* ValidationWorker.swift */; };
+		F35966F82F6B377200A6A85A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = F35966F72F6B377200A6A85A /* Alamofire */; };
+		F35967002F6B5F7B00A6A85A /* CardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35966FF2F6B5F7A00A6A85A /* CardCellViewModel.swift */; };
+		F35967022F6B5F8600A6A85A /* TransactionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F35967012F6B5F8500A6A85A /* TransactionCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B142FAE2F65DE3000FB0338 /* TitlesStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesStack.swift; sourceTree = "<group>"; };
+		9B142FB02F65E30B00FB0338 /* InfoStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoStack.swift; sourceTree = "<group>"; };
+		9B142FB22F65E99B00FB0338 /* TextFieldsStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldsStack.swift; sourceTree = "<group>"; };
+		9B142FB42F65F77B00FB0338 /* SubmitStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitStack.swift; sourceTree = "<group>"; };
 		CE765B9F2F4E253C009BE102 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		CE765BA22F4E32C1009BE102 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		CE765BA62F5077D1009BE102 /* MainAppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppButton.swift; sourceTree = "<group>"; };
@@ -168,6 +189,18 @@
 		CEBB5DE82F45DD1C00A5E08D /* TransferProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferProvider.swift; sourceTree = "<group>"; };
 		CEBB5DEA2F45DD2800A5E08D /* TransferBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferBuilder.swift; sourceTree = "<group>"; };
 		CEBB5DEC2F45DD3300A5E08D /* TransferDataFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferDataFlow.swift; sourceTree = "<group>"; };
+		F35966D92F6A11C100A6A85A /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		F35966DB2F6A11CB00A6A85A /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		F35966DF2F6A15F300A6A85A /* UserNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNetworkService.swift; sourceTree = "<group>"; };
+		F35966E12F6A161600A6A85A /* CardNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardNetworkService.swift; sourceTree = "<group>"; };
+		F35966E32F6A163100A6A85A /* TransactionNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionNetworkService.swift; sourceTree = "<group>"; };
+		F35966EB2F6B0C5200A6A85A /* SessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionExtension.swift; sourceTree = "<group>"; };
+		F35966ED2F6B1CD700A6A85A /* UserDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDTO.swift; sourceTree = "<group>"; };
+		F35966EF2F6B1D3800A6A85A /* CardDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDTO.swift; sourceTree = "<group>"; };
+		F35966F12F6B1F1C00A6A85A /* TransactionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDTO.swift; sourceTree = "<group>"; };
+		F35966F42F6B2D2600A6A85A /* ValidationWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationWorker.swift; sourceTree = "<group>"; };
+		F35966FF2F6B5F7A00A6A85A /* CardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellViewModel.swift; sourceTree = "<group>"; };
+		F35967012F6B5F8500A6A85A /* TransactionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,12 +208,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F35966F82F6B377200A6A85A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B142FAD2F65DE2300FB0338 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				9B142FB42F65F77B00FB0338 /* SubmitStack.swift */,
+				9B142FB22F65E99B00FB0338 /* TextFieldsStack.swift */,
+				9B142FB02F65E30B00FB0338 /* InfoStack.swift */,
+				9B142FAE2F65DE3000FB0338 /* TitlesStack.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
 		CE765B9D2F4E245B009BE102 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +271,7 @@
 		CEBB5D352F44AA1B00A5E08D /* BetaBank */ = {
 			isa = PBXGroup;
 			children = (
+				F35966D82F6A11A500A6A85A /* Network */,
 				CE765B9D2F4E245B009BE102 /* Shared */,
 				CEBB5D912F45446400A5E08D /* DI */,
 				CEBB5D692F4504EB00A5E08D /* Storages */,
@@ -268,6 +314,7 @@
 		CEBB5D4C2F44E42800A5E08D /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				F35966F32F6B2D1500A6A85A /* Workers */,
 				CEBB5D6C2F4506FE00A5E08D /* AuthService.swift */,
 				CEBB5D8B2F45388F00A5E08D /* UserService.swift */,
 				CEBB5D8D2F45389E00A5E08D /* TransactionService.swift */,
@@ -391,6 +438,7 @@
 		CEBB5D632F44EDAA00A5E08D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9B142FAD2F65DE2300FB0338 /* Subviews */,
 				CEBB5D642F44FF2B00A5E08D /* AuthView.swift */,
 			);
 			path = View;
@@ -422,6 +470,7 @@
 		CEBB5D7C2F452B4700A5E08D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F35966FC2F6B5F5700A6A85A /* Cells */,
 				CEBB5D892F4536ED00A5E08D /* HomeView.swift */,
 			);
 			path = View;
@@ -483,6 +532,79 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F35966D82F6A11A500A6A85A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				F35966EA2F6B0C4700A6A85A /* Extensions */,
+				F35966DE2F6A120200A6A85A /* Services */,
+				F35966DD2F6A11FA00A6A85A /* DTO */,
+				F35966DB2F6A11CB00A6A85A /* NetworkClient.swift */,
+				F35966D92F6A11C100A6A85A /* NetworkError.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		F35966DD2F6A11FA00A6A85A /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				F35966F12F6B1F1C00A6A85A /* TransactionDTO.swift */,
+				F35966EF2F6B1D3800A6A85A /* CardDTO.swift */,
+				F35966ED2F6B1CD700A6A85A /* UserDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		F35966DE2F6A120200A6A85A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F35966E32F6A163100A6A85A /* TransactionNetworkService.swift */,
+				F35966E12F6A161600A6A85A /* CardNetworkService.swift */,
+				F35966DF2F6A15F300A6A85A /* UserNetworkService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F35966EA2F6B0C4700A6A85A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F35966EB2F6B0C5200A6A85A /* SessionExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F35966F32F6B2D1500A6A85A /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				F35966F42F6B2D2600A6A85A /* ValidationWorker.swift */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		F35966FC2F6B5F5700A6A85A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F35966FE2F6B5F6D00A6A85A /* TransactionCell */,
+				F35966FD2F6B5F6500A6A85A /* CardCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F35966FD2F6B5F6500A6A85A /* CardCell */ = {
+			isa = PBXGroup;
+			children = (
+				F35966FF2F6B5F7A00A6A85A /* CardCellViewModel.swift */,
+			);
+			path = CardCell;
+			sourceTree = "<group>";
+		};
+		F35966FE2F6B5F6D00A6A85A /* TransactionCell */ = {
+			isa = PBXGroup;
+			children = (
+				F35967012F6B5F8500A6A85A /* TransactionCellViewModel.swift */,
+			);
+			path = TransactionCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -527,6 +649,9 @@
 				Base,
 			);
 			mainGroup = CEBB5D2A2F44AA1B00A5E08D;
+			packageReferences = (
+				F35966F62F6B377200A6A85A /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = CEBB5D342F44AA1B00A5E08D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -571,20 +696,30 @@
 				CEBB5D882F452DF900A5E08D /* HomeDataFlow.swift in Sources */,
 				CEBB5DB42F45C7DE00A5E08D /* SettingsViewController.swift in Sources */,
 				CEBB5DA02F454F6200A5E08D /* CardDetailsView.swift in Sources */,
+				F35966F52F6B2D2700A6A85A /* ValidationWorker.swift in Sources */,
 				CEBB5DCB2F45D00B00A5E08D /* EditProfileProvider.swift in Sources */,
 				CEBB5DE32F45DCE300A5E08D /* TransferViewController.swift in Sources */,
+				F35966E22F6A161900A6A85A /* CardNetworkService.swift in Sources */,
 				CEBB5DBA2F45C80300A5E08D /* SettingsPresenter.swift in Sources */,
 				CEBB5D582F44E4E300A5E08D /* AuthViewController.swift in Sources */,
 				CEBB5D842F452D6700A5E08D /* HomeProvider.swift in Sources */,
+				F35966E42F6A163300A6A85A /* TransactionNetworkService.swift in Sources */,
+				F35966F02F6B1D3C00A6A85A /* CardDTO.swift in Sources */,
 				CEBB5D6B2F45050000A5E08D /* Storage.swift in Sources */,
 				CEBB5D6F2F450B4C00A5E08D /* StorageError.swift in Sources */,
 				CEBB5DA72F4558DB00A5E08D /* TransactionDetailsViewController.swift in Sources */,
 				CEBB5D602F44EB6000A5E08D /* AuthDataFlow.swift in Sources */,
+				F35967022F6B5F8600A6A85A /* TransactionCellViewModel.swift in Sources */,
+				9B142FB32F65E9A300FB0338 /* TextFieldsStack.swift in Sources */,
 				CEBB5DDE2F45D79500A5E08D /* AddCardDataFlow.swift in Sources */,
 				CEBB5D712F450C9000A5E08D /* UserStorage.swift in Sources */,
 				CEBB5D6D2F4506FE00A5E08D /* AuthService.swift in Sources */,
 				CEBB5DC02F45C82900A5E08D /* SettingsDataFlow.swift in Sources */,
 				CEBB5D772F450DDB00A5E08D /* Card.swift in Sources */,
+				F35966F22F6B1F1D00A6A85A /* TransactionDTO.swift in Sources */,
+				F35966E02F6A15F500A6A85A /* UserNetworkService.swift in Sources */,
+				F35966DA2F6A11C200A6A85A /* NetworkError.swift in Sources */,
+				9B142FB12F65E35E00FB0338 /* InfoStack.swift in Sources */,
 				CEBB5D682F4501F300A5E08D /* AuthProvider.swift in Sources */,
 				CEBB5DD62F45D76900A5E08D /* AddCardInteractor.swift in Sources */,
 				CEBB5D5A2F44E59200A5E08D /* AuthInteractor.swift in Sources */,
@@ -605,22 +740,27 @@
 				CEBB5DAD2F4558FF00A5E08D /* TransactionDetailsDataFlow.swift in Sources */,
 				CEBB5DE12F45DCDA00A5E08D /* TransferView.swift in Sources */,
 				CEBB5D962F454F1200A5E08D /* CardDetailsViewController.swift in Sources */,
+				9B142FB52F65F78900FB0338 /* SubmitStack.swift in Sources */,
 				CEBB5D392F44AA1B00A5E08D /* SceneDelegate.swift in Sources */,
 				CEBB5DBE2F45C81D00A5E08D /* SettingsBuilder.swift in Sources */,
 				CEBB5D752F450DCB00A5E08D /* CardStorage.swift in Sources */,
 				CEBB5DB12F45591D00A5E08D /* TransactionDetailsBuilder.swift in Sources */,
 				CEBB5DD42F45D75F00A5E08D /* AddCardViewController.swift in Sources */,
 				CEBB5DAB2F4558F300A5E08D /* TransactionDetailsPresenter.swift in Sources */,
+				9B142FAF2F65DE4A00FB0338 /* TitlesStack.swift in Sources */,
 				CEBB5D5E2F44E68400A5E08D /* AuthBuilder.swift in Sources */,
 				CEBB5D902F4538AC00A5E08D /* CardService.swift in Sources */,
 				CEBB5DD22F45D75000A5E08D /* AddCardView.swift in Sources */,
+				F35966DC2F6A11D200A6A85A /* NetworkClient.swift in Sources */,
 				CEBB5D7E2F452B5600A5E08D /* HomeViewController.swift in Sources */,
 				CEBB5D792F450E1000A5E08D /* TransactionStorage.swift in Sources */,
 				CE765BA72F5077D2009BE102 /* MainAppButton.swift in Sources */,
 				CEBB5D9C2F454F4700A5E08D /* CardDetailsBuilder.swift in Sources */,
+				F35966EC2F6B0C6000A6A85A /* SessionExtension.swift in Sources */,
 				CEBB5DA92F4558E800A5E08D /* TransactionDetailsInteractor.swift in Sources */,
 				CEBB5DCF2F45D02200A5E08D /* EditProfileDataFlow.swift in Sources */,
 				CEBB5DDC2F45D78600A5E08D /* AddCardBuilder.swift in Sources */,
+				F35967002F6B5F7B00A6A85A /* CardCellViewModel.swift in Sources */,
 				CEBB5DED2F45DD3300A5E08D /* TransferDataFlow.swift in Sources */,
 				CEBB5D5C2F44E61100A5E08D /* AuthPresenter.swift in Sources */,
 				CEBB5D562F44E48E00A5E08D /* MainCoordinator.swift in Sources */,
@@ -629,6 +769,7 @@
 				CEBB5DC32F45CFE000A5E08D /* EditProfileView.swift in Sources */,
 				CEBB5DB82F45C7F700A5E08D /* SettingsInteractor.swift in Sources */,
 				CEBB5DCD2F45D01800A5E08D /* EditProfileBuilder.swift in Sources */,
+				F35966EE2F6B1CDE00A6A85A /* UserDTO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -841,6 +982,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F35966F62F6B377200A6A85A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.11.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F35966F72F6B377200A6A85A /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F35966F62F6B377200A6A85A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CEBB5D2B2F44AA1B00A5E08D /* Project object */;
 }

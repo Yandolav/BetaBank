@@ -34,7 +34,7 @@ class MainCoordinator: Coordinator {
     }
 
     func showHomeScreen(userId: UUID) {
-        let viewController = HomeViewController(currentUserId: userId)
+        let viewController = HomeBuilder().build(dependencyContainer: dependencyContainer, userId: userId)
         viewController.coordinator = self
         navigationController.setViewControllers([viewController], animated: true)
     }

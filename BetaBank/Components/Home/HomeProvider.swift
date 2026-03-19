@@ -1,9 +1,9 @@
 import Foundation
 
 protocol HomeProviderProtocol {
-    func loadUser(userId: UUID) -> Result<User, Error>
-    func loadCards(userId: UUID) -> Result<[Card], Error>
-    func loadTransactions(userId: UUID) -> Result<[Transaction], Error>
+    func loadUser(userId: UUID) async -> Result<User, Error>
+    func loadCards(userId: UUID) async -> Result<[Card], Error>
+    func loadTransactions(userId: UUID) async -> Result<[Transaction], Error>
 }
 
 final class HomeProvider {
@@ -16,7 +16,11 @@ final class HomeProvider {
 
     // MARK: Init
 
-    init(userService: UserServiceProtocol, cardService: CardServiceProtocol, transactionService: TransactionServiceProtocol) {
+    init(
+        userService: UserServiceProtocol,
+        cardService: CardServiceProtocol,
+        transactionService: TransactionServiceProtocol
+    ) {
         self.userService = userService
         self.cardService = cardService
         self.transactionService = transactionService
@@ -26,23 +30,16 @@ final class HomeProvider {
 // MARK: - HomeProviderProtocol
 
 extension HomeProvider: HomeProviderProtocol {
-    func loadUser(userId: UUID) -> Result<User, Error> {
-        .success(User(
-            id: UUID(),
-            firstName: "",
-            lastName: "",
-            email: "",
-            password: "",
-            phone: "",
-            dataImage: Data()
-        ))
+
+    func loadUser(userId: UUID) async -> Result<User, Error> {
+        await userService.getUser(userId: userId)
     }
-    
-    func loadCards(userId: UUID) -> Result<[Card], Error> {
-        .success([])
+
+    func loadCards(userId: UUID) async -> Result<[Card], Error> {
+        await cardService.getAllCards(userId: userId)
     }
-    
-    func loadTransactions(userId: UUID) -> Result<[Transaction], Error> {
-        .success([])
+
+    func loadTransactions(userId: UUID) async -> Result<[Transaction], Error> {
+        await transactionService.getAllTransactions(userId: userId)
     }
 }

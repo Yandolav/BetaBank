@@ -1,5 +1,3 @@
-import Dispatch
-
 protocol AuthInteractorInput: AnyObject {
     func signIn(request: Auth.SignIn.Request)
     func signUp(request: Auth.SignUp.Request)
@@ -20,6 +18,7 @@ final class AuthInteractor {
     // MARK: Private properties
 
     private let provider: AuthProviderProtocol
+    private var loadTask: Task<Void, Never>?
 
     // MARK: Init
 
@@ -32,18 +31,34 @@ final class AuthInteractor {
 
 extension AuthInteractor: AuthInteractorInput {
     func signIn(request: Auth.SignIn.Request) {
-        let result = provider.signIn(email: request.email, password: request.password)
-        presenter?.presentSignInResult(response: .init(result: result))
+        loadTask?.cancel()
+        loadTask = Task {
+            let result = await provider.signIn(email: request.email, password: request.password)
+
+            guard !Task.isCancelled else { return }
+
+            await MainActor.run {
+                presenter?.presentSignInResult(response: .init(result: result))
+            }
+        }
     }
 
     func signUp(request: Auth.SignUp.Request) {
-        let result = provider.signUp(
-            firstName: request.firstName,
-            lastName: request.lastName,
-            email: request.email,
-            password: request.password
-        )
-        presenter?.presentSignUpResult(response: .init(result: result))
+        loadTask?.cancel()
+        loadTask = Task {
+            let result = await provider.signUp(
+                firstName: request.firstName,
+                lastName: request.lastName,
+                email: request.email,
+                password: request.password
+            )
+
+            guard !Task.isCancelled else { return }
+
+            await MainActor.run {
+                presenter?.presentSignUpResult(response: .init(result: result))
+            }
+        }
     }
 
     func firstNameValidate(request: Auth.FirstNameValidate.Request) {

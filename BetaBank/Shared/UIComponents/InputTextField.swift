@@ -15,8 +15,8 @@ class InputTextField: UIView {
         }
     }
 
-    var textFieldText: String {
-        get { textField.text ?? "" }
+    var textFieldText: String? {
+        get { textField.text }
         set { textField.text = newValue }
     }
 

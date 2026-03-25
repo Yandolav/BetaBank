@@ -34,6 +34,7 @@ final class HomeViewController: UIViewController {
         let view = HomeView()
         view.delegate = self
         view.configure(id: currentUserId)
+        interactor?.loadData(request: .init(userId: currentUserId))
         self.view = view
     }
 }
@@ -42,7 +43,20 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController: HomeViewControllerInput {
     func displayData(viewModel: Home.LoadData.ViewModel) {
-        // code
+        switch viewModel.state {
+        case .empty:
+            print("Empty")
+        case .loading:
+            print("Loading")
+        case .content(user: let user, cards: let cards, transactions: let transactions):
+            print("User: \(user)")
+            print("----------")
+            print("User cards: \(cards)")
+            print("----------")
+            print("User transactions: \(transactions)")
+        case .error(message: let message):
+            print("Error: \(message)")
+        }
     }
 }
 

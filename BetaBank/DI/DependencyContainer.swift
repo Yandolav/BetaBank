@@ -1,3 +1,4 @@
+import Foundation
 final class DependencyContainer {
 
     // MARK: Private properties
@@ -11,15 +12,24 @@ final class DependencyContainer {
 
     init() {
         let store = FileDataStore()
+        let networkClient = NetworkClient()
+        let validator = ValidationWorker()
 
         let userStorage = UserStorage(store: store)
         let cardStorage = CardStorage(store: store)
         let transactionStorage = TransactionStorage(store: store)
 
-        self.authService = AuthService(storage: userStorage)
-        self.userService = UserService(userStorage: userStorage)
-        self.cardService = CardService(cardStorage: cardStorage)
-        self.transactionService = TransactionService(transactionStorage: transactionStorage)
+        let userNetworkService = UserNetworkService(client: networkClient, storage: userStorage)
+        let cardNetworkService = CardNetworkService(client: networkClient, storage: cardStorage)
+        let transactionNetworkService = TransactionNetworkService(client: networkClient, storage: transactionStorage)
+
+        self.authService = AuthService(networkService: userNetworkService, validator: validator)
+        self.userService = UserService(networkService: userNetworkService, validator: validator)
+        self.cardService = CardService(networkService: cardNetworkService)
+        self.transactionService = TransactionService(
+            networkService: transactionNetworkService,
+            cardNetworkService: cardNetworkService
+        )
     }
 
     // MARK: Public methods

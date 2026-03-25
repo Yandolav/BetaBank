@@ -1,61 +1,119 @@
 import Foundation
 
 protocol TransactionServiceProtocol {
-    func getTransaction(transactionId: UUID) -> Result<Transaction, Error>
-
-    func getAllTransactions(userId: UUID) -> Result<[Transaction], Error>
-
+    func getAllTransactions(userId: UUID) async -> Result<[Transaction], Error>
     func createTransaction(
         amountMinor: Int,
         direction: Transaction.Direction,
         status: Transaction.Status,
-        title: String,
         comment: String?,
         fromCard: UUID,
         toCard: UUID
-    ) -> Result<Void, Error>
-
-    func deleteTransaction(transactionId: UUID) -> Result<Void, Error>
+    ) async -> Result<Void, Error>
 }
 
 final class TransactionService {
 
     // MARK: Private properties
 
-    private let transactionStorage: any TransactionStorageProtocol
+    private let networkService: any TransactionNetworkServiceProtocol
+    private let cardNetworkService: any CardNetworkServiceProtocol
 
     // MARK: Init
 
-    init(transactionStorage: any TransactionStorageProtocol) {
-        self.transactionStorage = transactionStorage
+    init(
+        networkService: any TransactionNetworkServiceProtocol,
+        cardNetworkService: any CardNetworkServiceProtocol
+    ) {
+        self.networkService = networkService
+        self.cardNetworkService = cardNetworkService
+    }
+
+    // MARK: Private methods
+
+    private func validateAmount(_ amount: Int) -> Result<Void, Error> {
+        guard amount > 0 else { return .failure(TransactionServiceError.invalidAmount) }
+        return .success(())
+    }
+
+    private func validateCards(from: UUID, to: UUID) -> Result<Void, Error> {
+        guard from != to else { return .failure(TransactionServiceError.sameCardTransfer) }
+        return .success(())
     }
 }
 
 // MARK: - TransactionServiceProtocol
 
 extension TransactionService: TransactionServiceProtocol {
-    func getTransaction(transactionId: UUID) -> Result<Transaction, Error> {
-        .failure(StorageError.existingEntity)
-    }
-    
-    func getAllTransactions(userId: UUID) -> Result<[Transaction], Error> {
-        .failure(StorageError.existingEntity)
+
+    func getAllTransactions(userId: UUID) async -> Result<[Transaction], Error> {
+        let cardsResult = await cardNetworkService.getAllCards()
+
+        var userCardIds: Set<UUID> = []
+        if case .success(let cards) = cardsResult {
+            userCardIds = Set(cards.filter { $0.userID == userId }.map { $0.id })
+        }
+
+        let result = await networkService.getAllTransactions()
+
+        switch result {
+        case .success(let dtos):
+            let transactions = dtos
+                .map { $0.toDomain() }
+                .filter { userCardIds.contains($0.fromCard) || userCardIds.contains($0.toCard) }
+            return .success(transactions)
+        case .failure(let error):
+            return .failure(error)
+        }
     }
 
     func createTransaction(
         amountMinor: Int,
         direction: Transaction.Direction,
         status: Transaction.Status,
-        title: String,
         comment: String?,
-        fromCard from: UUID,
-        toCard to: UUID
-    ) -> Result<Void, Error> {
-        .failure(StorageError.existingEntity)
-    }
+        fromCard: UUID,
+        toCard: UUID
+    ) async -> Result<Void, Error> {
+        if case .failure(let error) = validateAmount(amountMinor) { return .failure(error) }
+        if case .failure(let error) = validateCards(from: fromCard, to: toCard) { return .failure(error) }
 
-    func deleteTransaction(transactionId: UUID) -> Result<Void, Error> {
-        .failure(StorageError.existingEntity)
+        if direction == .debit {
+            let cardsResult = await cardNetworkService.getAllCards()
+
+            switch cardsResult {
+            case .success(let cards):
+                guard let card = cards.first(where: { $0.id == fromCard }) else {
+                    return .failure(TransactionServiceError.cardNotFound)
+                }
+                guard card.balance >= amountMinor else {
+                    return .failure(TransactionServiceError.insufficientFunds(
+                        currentBalanceMinor: card.balance,
+                        requiredMinor: amountMinor
+                    ))
+                }
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+
+        let dto = TransactionDTO(
+            id: UUID(),
+            date: Date(),
+            amountMinor: amountMinor,
+            direction: direction.rawValue,
+            status: status.rawValue,
+            comment: comment,
+            fromCard: fromCard,
+            toCard: toCard
+        )
+
+        let result = await networkService.saveTransaction(dto)
+
+        switch result {
+        case .success: return .success(())
+        case .failure(let error): return .failure(error)
+        }
     }
 }
 
@@ -63,56 +121,20 @@ extension TransactionService: TransactionServiceProtocol {
 
 extension TransactionService {
     enum TransactionServiceError: Error, LocalizedError {
-        case transactionNotFound(transactionId: UUID)
-        case userNotFound(userId: UUID)
-        case cardNotFound(cardId: UUID)
         case invalidAmount
-        case emptyTitle
         case sameCardTransfer
-        case invalidStatus
+        case cardNotFound
         case insufficientFunds(currentBalanceMinor: Int, requiredMinor: Int)
-        case cardBlocked(cardId: UUID)
-        case cardExpired(cardId: UUID)
-        case dailyLimitExceeded(limitMinor: Int, attemptedMinor: Int)
-        case failedToLoadTransactions
-        case failedToSaveTransaction
-        case failedToDeleteTransaction
         case unknown(underlying: Error)
 
         var errorDescription: String? {
             switch self {
-            case .transactionNotFound(let id):
-                return "Транзакция с id \(id.uuidString) не найдена."
-            case .userNotFound(let id):
-                return "Пользователь с id \(id.uuidString) не найден."
-            case .cardNotFound(let id):
-                return "Карта с id \(id.uuidString) не найдена."
-            case .invalidAmount:
-                return "Сумма транзакции должна быть больше нуля."
-            case .emptyTitle:
-                return "Название транзакции не может быть пустым."
-            case .sameCardTransfer:
-                return "Нельзя выполнить перевод на ту же самую карту."
-            case .invalidStatus:
-                return "Некорректный статус транзакции."
-            case .insufficientFunds(let current, let required):
-                return "Недостаточно средств. Доступно: \(current), требуется: \(required)."
-            case .cardBlocked(let id):
-                return "Операция невозможна: карта \(id.uuidString) заблокирована."
-            case .cardExpired(let id):
-                return "Операция невозможна: карта \(id.uuidString) просрочена."
-            case .dailyLimitExceeded(let limit, let attempted):
-                return "Превышен дневной лимит. Лимит: \(limit), попытка: \(attempted)."
-            case .failedToLoadTransactions:
-                return "Не удалось получить список транзакций."
-            case .failedToSaveTransaction:
-                return "Не удалось сохранить транзакцию."
-            case .failedToDeleteTransaction:
-                return "Не удалось удалить транзакцию."
-            case .unknown(let underlying):
-                return "Неизвестная ошибка: \(underlying.localizedDescription)"
+            case .invalidAmount: return "Сумма транзакции должна быть больше нуля."
+            case .sameCardTransfer: return "Нельзя выполнить перевод на ту же самую карту."
+            case .cardNotFound: return "Карта не найдена."
+            case .insufficientFunds(let current, let required): return "Недостаточно средств. Доступно: \(current), требуется: \(required)."
+            case .unknown(let underlying): return "Неизвестная ошибка: \(underlying.localizedDescription)"
             }
         }
     }
 }
-

@@ -50,4 +50,11 @@ final class UserStorage: UserStorageProtocol {
         users[index] = entity
         return store.save(users, fileName: fileName)
     }
+
+    func upsert(entity: User) -> Result<Void, Error> {
+        switch fetch(id: entity.id) {
+        case .success: return update(id: entity.id, entity: entity)
+        case .failure: return create(entity: entity)
+        }
+    }
 }

@@ -50,4 +50,11 @@ final class CardStorage: CardStorageProtocol {
         cards[index] = entity
         return store.save(cards, fileName: fileName)
     }
+
+    func upsert(entity: Card) -> Result<Void, Error> {
+        switch fetch(id: entity.id) {
+        case .success: return update(id: entity.id, entity: entity)
+        case .failure: return create(entity: entity)
+        }
+    }
 }

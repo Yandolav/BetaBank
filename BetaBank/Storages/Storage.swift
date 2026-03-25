@@ -8,4 +8,5 @@ protocol Storage {
     func create(entity: Entity) -> Result<Void, Error>
     func delete(id: UUID) -> Result<Void, Error>
     func update(id: UUID, entity: Entity) -> Result<Void, Error>
+    func upsert(entity: Entity) -> Result<Void, Error>
 }

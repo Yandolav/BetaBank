@@ -123,27 +123,27 @@ extension AuthViewController: AuthViewControllerInput {
 // MARK: - AuthViewDelegate
 
 extension AuthViewController: AuthViewDelegate {
-    func didTapSignIn(email: String,password: String) {
+    func didTapSignIn(email: String?,password: String?) {
         interactor?.signIn(request: .init(password: password, email: email))
     }
 
-    func didTapSignUp(firstName: String, lastName: String, email: String, password: String) {
+    func didTapSignUp(firstName: String?, lastName: String?, email: String?, password: String?) {
         interactor?.signUp(request: .init(firstName: firstName, lastName: lastName, password: password, email: email))
     }
 
-    func firstNameTextFieldValidate(text: String) {
+    func firstNameTextFieldValidate(text: String?) {
         interactor?.firstNameValidate(request: .init(firstName: text))
     }
 
-    func lastNameTextFieldValidate(text: String) {
+    func lastNameTextFieldValidate(text: String?) {
         interactor?.lastNameValidate(request: .init(lastName: text))
     }
 
-    func emailTextFieldValidate(text: String) {
+    func emailTextFieldValidate(text: String?) {
         interactor?.emailValidate(request: .init(email: text))
     }
 
-    func passwordTextFieldValidate(text: String) {
+    func passwordTextFieldValidate(text: String?) {
         interactor?.passwordValidate(request: .init(password: text))
     }
 }

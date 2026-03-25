@@ -9,29 +9,43 @@ protocol UserServiceProtocol {
         password: String,
         phone: String?,
         dataImage: Data?
-    ) -> Result<User, Error>
-
-    func getUser(userId: UUID) -> Result<User, Error>
-
-    func deleteUser(userId: UUID) -> Result<Void, Error>
+    ) async -> Result<User, Error>
+    func getUser(userId: UUID) async -> Result<User, Error>
 }
 
 final class UserService {
 
     // MARK: Private properties
 
-    private let userStorage: any UserStorageProtocol
+    private let networkService: UserNetworkServiceProtocol
+    private let validator: ValidationWorker
 
     // MARK: Init
 
-    init(userStorage: any UserStorageProtocol) {
-        self.userStorage = userStorage
+    init(networkService: UserNetworkServiceProtocol, validator: ValidationWorker) {
+        self.networkService = networkService
+        self.validator = validator
     }
 }
 
 // MARK: - UserServiceProtocol
 
 extension UserService: UserServiceProtocol {
+
+    func getUser(userId: UUID) async -> Result<User, Error> {
+        let result = await networkService.getAllUsers()
+
+        switch result {
+        case .success(let dtos):
+            guard let dto = dtos.first(where: { $0.id == userId }) else {
+                return .failure(UserServiceError.userNotFound(userId: userId))
+            }
+            return .success(dto.toDomain())
+        case .failure(let error):
+            return .failure(error)
+        }
+    }
+
     func updateUser(
         userId: UUID,
         firstName: String,
@@ -40,16 +54,34 @@ extension UserService: UserServiceProtocol {
         password: String,
         phone: String?,
         dataImage: Data?
-    ) -> Result<User, Error> {
-        .failure(StorageError.existingEntity)
-    }
+    ) async -> Result<User, Error> {
+        if case .failure(let error) = validator.validateFirstName(firstName) { return .failure(error) }
+        if case .failure(let error) = validator.validateLastName(lastName) { return .failure(error) }
+        if case .failure(let error) = validator.validateEmail(email) { return .failure(error) }
+        if case .failure(let error) = validator.validatePassword(password) { return .failure(error) }
 
-    func getUser(userId: UUID) -> Result<User, Error> {
-        .failure(StorageError.existingEntity)
-    }
+        if let phone {
+            if case .failure(let error) = validator.validatePhone(phone) { return .failure(error) }
+        }
 
-    func deleteUser(userId: UUID) -> Result<Void, Error> {
-        .failure(StorageError.existingEntity)
+        let dto = UserDTO(
+            id: userId,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password,
+            phone: phone,
+            dataImage: dataImage?.base64EncodedString()
+        )
+
+        let result = await networkService.updateUser(dto)
+
+        switch result {
+        case .success:
+            return .success(dto.toDomain())
+        case .failure(let error):
+            return .failure(error)
+        }
     }
 }
 
@@ -58,41 +90,10 @@ extension UserService: UserServiceProtocol {
 extension UserService {
     enum UserServiceError: Error, LocalizedError {
         case userNotFound(userId: UUID)
-        case userAlreadyExists(userId: UUID)
-        case invalidFirstName
-        case invalidLastName
-        case invalidEmail
-        case invalidPassword
-        case invalidPhone
-        case failedToLoad
-        case failedToSave
-        case failedToDelete
-        case unknown(underlying: Error)
 
         var errorDescription: String? {
             switch self {
-            case .userNotFound(let userId):
-                return "Пользователь с id \(userId.uuidString) не найден."
-            case .userAlreadyExists(let userId):
-                return "Пользователь с id \(userId.uuidString) уже существует."
-            case .invalidFirstName:
-                return "Некорректное имя."
-            case .invalidLastName:
-                return "Некорректная фамилия."
-            case .invalidEmail:
-                return "Некорректный email."
-            case .invalidPassword:
-                return "Некорректный пароль."
-            case .invalidPhone:
-                return "Некорректный номер телефона."
-            case .failedToLoad:
-                return "Не удалось получить данные пользователя."
-            case .failedToSave:
-                return "Не удалось сохранить данные пользователя."
-            case .failedToDelete:
-                return "Не удалось удалить пользователя."
-            case .unknown(let underlying):
-                return "Неизвестная ошибка: \(underlying.localizedDescription)"
+            case .userNotFound(let userId): return "Пользователь с id \(userId.uuidString) не найден."
             }
         }
     }

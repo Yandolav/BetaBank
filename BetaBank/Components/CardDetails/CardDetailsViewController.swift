@@ -11,6 +11,7 @@ final class CardDetailsViewController: UIViewController {
     // MARK: Public properties
 
     var interactor: CardDetailsViewControllerOutput?
+    weak var coordinator: Coordinator?
 
     // MARK: Lifecycle
 

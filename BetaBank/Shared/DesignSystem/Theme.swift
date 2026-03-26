@@ -5,6 +5,7 @@ enum Theme {
     enum Colors {
         static let accentColor = UIColor(red: 0.213, green: 0.161, blue: 0.717, alpha: 1)
         static let unavailableСolor = UIColor(red: 0.949, green: 0.946, blue: 0.975, alpha: 1)
+        static let surfaceColor = UIColor(red: 0.97, green: 0.97, blue: 0.98, alpha: 1)
 
         static let whiteText = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         static let blueText = UIColor(red: 0.213, green: 0.161, blue: 0.717, alpha: 1)

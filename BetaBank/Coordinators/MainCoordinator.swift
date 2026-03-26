@@ -1,4 +1,3 @@
-import Foundation
 import UIKit
 
 protocol Coordinator: AnyObject {
@@ -12,7 +11,7 @@ protocol Coordinator: AnyObject {
     func showTransferScreen(userId: UUID)
 }
 
-class MainCoordinator: Coordinator {
+final class MainCoordinator: Coordinator {
 
     // MARK: Private properties
 
@@ -25,7 +24,7 @@ class MainCoordinator: Coordinator {
         self.navigationController = navigationController
     }
 
-    // MARK: Public properties
+    // MARK: Public methods
 
     func start() {
         let viewController = AuthBuilder().build(dependencyContainer: dependencyContainer)
@@ -40,26 +39,39 @@ class MainCoordinator: Coordinator {
     }
 
     func showCardDetails(cardId: UUID) {
-        // code
+        let viewController = CardDetailsViewController()
+        viewController.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
     }
 
     func showTransactionDetails(transactionId: UUID) {
-        // code
+        let viewController = TransactionDetailsViewController()
+        viewController.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
     }
 
     func showSettingsScreen(userId: UUID) {
-        // code
+        let viewController = SettingsViewController()
+        viewController.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
     }
 
     func showEditProfileScreen(userId: UUID) {
-        // code
+        let viewController = EditProfileViewController()
+        viewController.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
     }
 
     func showAddCardScreen(userId: UUID) {
-        // code
+        let viewController = AddCardViewController()
+        viewController.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
     }
 
     func showTransferScreen(userId: UUID) {
-        // code
+        let viewController = TransferViewController()
+        viewController.coordinator = self
+        navigationController.pushViewController(viewController, animated: true)
     }
 }
+

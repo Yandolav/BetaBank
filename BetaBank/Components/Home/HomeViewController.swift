@@ -16,6 +16,12 @@ final class HomeViewController: UIViewController {
     // MARK: Private properties
 
     private let currentUserId: UUID
+    private let cardsManager = CardsListManager()
+    private let transactionsManager = TransactionsListManager()
+
+    private var homeView: HomeView {
+        view as! HomeView
+    }
 
     // MARK: Init
 
@@ -31,11 +37,30 @@ final class HomeViewController: UIViewController {
     // MARK: Lifecycle
 
     override func loadView() {
-        let view = HomeView()
-        view.delegate = self
-        view.configure(id: currentUserId)
+        let homeView = HomeView()
+        homeView.delegate = self
+        self.view = homeView
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupManagers()
+        loadData()
+    }
+
+    // MARK: Private methods
+
+    private func setupManagers() {
+        cardsManager.delegate = self
+        cardsManager.bind(to: homeView.cardsCollectionView)
+
+        transactionsManager.delegate = self
+        transactionsManager.bind(to: homeView.transactionsCollectionView)
+    }
+
+    private func loadData() {
+        homeView.setState(.loading)
         interactor?.loadData(request: .init(userId: currentUserId))
-        self.view = view
     }
 }
 
@@ -44,18 +69,17 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: HomeViewControllerInput {
     func displayData(viewModel: Home.LoadData.ViewModel) {
         switch viewModel.state {
-        case .empty:
-            print("Empty")
         case .loading:
-            print("Loading")
-        case .content(user: let user, cards: let cards, transactions: let transactions):
-            print("User: \(user)")
-            print("----------")
-            print("User cards: \(cards)")
-            print("----------")
-            print("User transactions: \(transactions)")
-        case .error(message: let message):
-            print("Error: \(message)")
+            homeView.setState(.loading)
+        case .empty:
+            homeView.setState(.empty)
+        case .content(let user, let cards, let transactions):
+            homeView.configure(bankName: "\(user.firstName) \(user.lastName)")
+            cardsManager.setItems(cards)
+            transactionsManager.setItems(transactions)
+            homeView.setState(viewModel.state)
+        case .error(let message):
+            homeView.setState(.error(message: message))
         }
     }
 }
@@ -63,23 +87,43 @@ extension HomeViewController: HomeViewControllerInput {
 // MARK: - HomeViewDelegate
 
 extension HomeViewController: HomeViewDelegate {
-    func didTapOnProfile() {
-        // code
+    func didTapProfile() {
+        coordinator?.showSettingsScreen(userId: currentUserId)
     }
 
+    func didTapSend() {
+        coordinator?.showTransferScreen(userId: currentUserId)
+    }
+
+    func didTapAddCard() {
+        coordinator?.showAddCardScreen(userId: currentUserId)
+    }
+
+    func didTapRetry() {
+        loadData()
+    }
+
+    func didRefresh() {
+        interactor?.loadData(request: .init(userId: currentUserId))
+    }
+
+    func didChangeSearch(query: String) {
+        transactionsManager.filter(by: query)
+    }
+}
+
+// MARK: - CardsListManagerDelegate
+
+extension HomeViewController: CardsListManagerDelegate {
     func didSelectCard(_ cardId: UUID) {
-        // code
+        coordinator?.showCardDetails(cardId: cardId)
     }
+}
 
+// MARK: - TransactionsListManagerDelegate
+
+extension HomeViewController: TransactionsListManagerDelegate {
     func didSelectTransaction(_ transactionId: UUID) {
-        // code
-    }
-
-    func didTapTransfer(fromCardId: UUID) {
-        // code
-    }
-
-    func didTapOnAddScreen() {
-        // code
+        coordinator?.showTransactionDetails(transactionId: transactionId)
     }
 }

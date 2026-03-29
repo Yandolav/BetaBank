@@ -255,8 +255,69 @@ TransactionCellViewModel: id, date, amountMinor, direction, status, comment
 - **Кнопка «Добавить карту»** → открывается `AddCardViewController` (заглушка)
 
 
-**Дополнительные задания**
+---
 
-- **D1. Pull-to-refresh** — реализован через `UIRefreshControl` на коллекции транзакций
-- **D2. Поиск** — реализован через `UISearchBar`; фильтрация происходит на уровне `CellViewModel` без перезапроса сети
-- **D4. Diffable DataSource** — реализован в `TransactionsListManager` через `UICollectionViewDiffableDataSource` с группировкой по датам
+### Lab-6 — Дизайн-система
+
+
+**Токены**
+
+Colors: accentColor, accentInteractive, background, surfaceColor, blackText, defaultTextColor, placeholderTextColor, whiteText, errorColor, successColor, defaultBorderColor, unavailableColor
+
+Fonts: largeTitle, title, title2, body, bodyMedium, bodySemibold, caption, captionSemibold, caption2, monospaced(size:weight:)
+
+Spacing: xs(5), s(8), sm(10), m(16), l(20), xl(24), xxl(32), section(50)
+
+Radius: s(8), m(15), l(20), xl(22)
+
+Shadow: card, modal
+
+
+
+#### Компоненты
+
+MainAppButton — кнопка с состояниями enable / disable / loading
+
+InputTextField — поле с заголовком, плейсхолдером, иконкой и состояниями normal / success / error
+
+DSStateView — единый компонент для состояний loading / error (+retry) / empty
+
+ActionButton — кнопка действия с иконкой из DS.Icons и заголовком
+
+
+
+#### На каких экранах применено
+
+Auth — AuthView, TitlesStack, TextFieldsStack, SubmitStack, InfoStack, InputTextField, MainAppButton
+
+Home — HomeView, HeaderContainerView, ActionsStackView, CardCollectionCell, TransactionCollectionCell, TransactionSectionHeaderView, DSStateView
+
+
+
+#### Где лежит дизайн-система
+
+BetaBank/Shared/DesignSystem/DS.swift — токены: Colors, Fonts, Spacing, Radius, Shadow
+
+BetaBank/Shared/DesignSystem/DSIcons.swift — иконки: размеры, тинты, готовые UIImage
+
+BetaBank/Shared/DesignSystem/Extensions/UILabel+TextStyle.swift — enum TextStyle + UILabel.apply(_:)
+
+BetaBank/Shared/UIComponents/MainAppButton.swift — основная кнопка (enable/disable/loading)
+
+BetaBank/Shared/UIComponents/InputTextField.swift — поле ввода (normal/success/error)
+
+BetaBank/Shared/UIComponents/ActionButton.swift — кнопка действия с иконкой и заголовком
+
+BetaBank/Shared/UIComponents/DSStateView.swift — состояния экрана (loading/error/empty)
+
+
+
+#### Как проверить состояния
+
+loading — показывается автоматически при каждом запросе на Home экране
+
+error — отключи интернет и запусти приложение или нажми pull-to-refresh; появится иконка и кнопка «Повторить»
+
+empty — показывается если сервер вернул пустые массивы карт и транзакций одновременно
+
+content - показывается если все вышеперечисленные состояния не отработали

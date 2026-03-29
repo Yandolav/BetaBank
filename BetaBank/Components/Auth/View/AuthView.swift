@@ -123,7 +123,7 @@ final class AuthView: UIView {
     // MARK: Private methods
 
     private func setupView() {
-        self.backgroundColor = .white
+        self.backgroundColor = DS.Colors.background
 
         self.addSubview(scrollView)
 
@@ -143,7 +143,7 @@ final class AuthView: UIView {
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: topAnchor, constant: Constants.scrollViewTopInset),
+            scrollView.topAnchor.constraint(equalTo: topAnchor, constant: DS.Spacing.section),
             scrollView.leadingAnchor.constraint(equalTo: leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: bottomAnchor),
@@ -158,18 +158,18 @@ final class AuthView: UIView {
             titlesStack.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: Constants.titlesHorizontalInset),
             titlesStack.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -Constants.titlesHorizontalInset),
 
-            textFieldsStack.topAnchor.constraint(equalTo: titlesStack.bottomAnchor, constant: Constants.sectionSpacing),
-            textFieldsStack.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: Constants.textFieldsHorizontalInset),
-            textFieldsStack.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -Constants.textFieldsHorizontalInset),
+            textFieldsStack.topAnchor.constraint(equalTo: titlesStack.bottomAnchor, constant: DS.Spacing.section),
+            textFieldsStack.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: DS.Spacing.l),
+            textFieldsStack.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -DS.Spacing.l),
 
-            submitStack.topAnchor.constraint(equalTo: textFieldsStack.bottomAnchor, constant: Constants.sectionSpacing),
+            submitStack.topAnchor.constraint(equalTo: textFieldsStack.bottomAnchor, constant: DS.Spacing.section),
             submitStack.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: Constants.submitStackButtonHorizontalInset),
             submitStack.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -Constants.submitStackButtonHorizontalInset),
 
-            infoStack.topAnchor.constraint(equalTo: submitStack.bottomAnchor, constant: Constants.infoTopSpacing),
-            infoStack.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: Constants.infoHorizontalInset),
-            infoStack.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -Constants.infoHorizontalInset),
-            infoStack.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -Constants.containerBottomInset)
+            infoStack.topAnchor.constraint(equalTo: submitStack.bottomAnchor, constant: DS.Spacing.sm),
+            infoStack.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: DS.Spacing.l),
+            infoStack.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -DS.Spacing.l),
+            infoStack.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -DS.Spacing.l)
         ])
     }
 
@@ -337,15 +337,7 @@ extension AuthView: SubmitStackDelegate {
 private extension AuthView {
     enum Constants {
         static let titlesHorizontalInset: CGFloat = 30
-        static let textFieldsHorizontalInset: CGFloat = 20
         static let submitStackButtonHorizontalInset: CGFloat = 40
-        static let infoHorizontalInset: CGFloat = 20
-
-        static let sectionSpacing: CGFloat = 50
-        static let infoTopSpacing: CGFloat = 10
-        static let containerBottomInset: CGFloat = 20
-
-        static let scrollViewTopInset: CGFloat = 50
 
         static let signInInfoPrefix: String = "У вас нету аккаунта?"
         static let signInInfoAction: String = "Зарегистрируйтесь"

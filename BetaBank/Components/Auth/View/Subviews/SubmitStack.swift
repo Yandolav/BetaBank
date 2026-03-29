@@ -21,7 +21,7 @@ final class SubmitStack: UIView {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.spacing = Constants.submitStackSpacing
+        stack.spacing = DS.Spacing.xs
         stack.alignment = .fill
         return stack
     }()
@@ -36,9 +36,8 @@ final class SubmitStack: UIView {
     private let submitErrorLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Theme.Fonts.caption
-        label.textColor = Theme.Colors.errorColor
-        label.numberOfLines = Constants.errorLabelNumberOfLines
+        label.apply(.error)
+        label.numberOfLines = 0
         label.textAlignment = .center
         label.isHidden = true
         return label
@@ -95,10 +94,6 @@ final class SubmitStack: UIView {
 
 private extension SubmitStack {
     enum Constants {
-        static let submitStackSpacing: CGFloat = 5
-
-        static let errorLabelNumberOfLines: Int = 0
-
         static let submitButtonAccessibilityIdentifier = "Auth.SubmitButton"
     }
 }

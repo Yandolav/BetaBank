@@ -8,7 +8,6 @@ class InputTextField: UIView {
         get {
             textField.isSecureTextEntry
         }
-
         set {
             textField.isSecureTextEntry = newValue
             changeSecureTextEntry()
@@ -26,8 +25,8 @@ class InputTextField: UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
-        view.layer.borderWidth = Constants.containerBorderWidth
-        view.layer.cornerRadius = Constants.containerCornerRadius
+        view.layer.borderWidth = 1
+        view.layer.cornerRadius = DS.Radius.m
         return view
     }()
 
@@ -35,8 +34,8 @@ class InputTextField: UIView {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.backgroundColor = .clear
-        textField.textColor = Theme.Colors.blackText
-        textField.font = Theme.Fonts.body
+        textField.textColor = DS.Colors.blackText
+        textField.font = DS.Fonts.body
         textField.autocorrectionType = .no
         textField.autocapitalizationType = .none
         return textField
@@ -45,7 +44,7 @@ class InputTextField: UIView {
     private let rightAccessory: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.tintColor = Theme.Colors.accentColor
+        button.tintColor = DS.Colors.accentColor
         button.isHidden = true
         return button
     }()
@@ -53,17 +52,15 @@ class InputTextField: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Theme.Fonts.body
-        label.textColor = Theme.Colors.defaultTextColor
+        label.apply(.caption)
         return label
     }()
 
     private let errorLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Theme.Fonts.caption
-        label.textColor = Theme.Colors.errorColor
-        label.numberOfLines = Constants.errorLabelNumberOfLines
+        label.apply(.error)
+        label.numberOfLines = 3
         label.isHidden = true
         return label
     }()
@@ -90,7 +87,7 @@ class InputTextField: UIView {
         title: String,
         placeholder: String,
         returnKeyType: UIReturnKeyType,
-        buttonImageName: String? = nil,
+        buttonImage: UIImage? = nil,
         buttonAction: ((InputTextField) -> Void)? = nil,
         returnAction: ((InputTextField) -> Void)? = nil,
         validateAction: ((InputTextField) -> Void)? = nil
@@ -100,16 +97,16 @@ class InputTextField: UIView {
         let text = NSAttributedString(
             string: placeholder,
             attributes: [
-                .font: Theme.Fonts.body,
-                .foregroundColor: Theme.Colors.placeholderTextColor
+                .font: DS.Fonts.body,
+                .foregroundColor: DS.Colors.placeholderTextColor
             ]
         )
         textField.attributedPlaceholder = text
 
         textField.returnKeyType = returnKeyType
 
-        if let buttonImageName {
-            rightAccessory.setImage(UIImage(systemName: buttonImageName), for: .normal)
+        if let buttonImage {
+            rightAccessory.setImage(buttonImage, for: .normal)
             rightAccessory.isHidden = false
         } else {
             rightAccessory.isHidden = true
@@ -125,15 +122,15 @@ class InputTextField: UIView {
     func changeState(state: TextFieldState) {
         switch state {
         case .normal:
-            container.layer.borderColor = Theme.Colors.defaultBorderColor.cgColor
+            container.layer.borderColor = DS.Colors.defaultBorderColor.cgColor
             errorLabel.text = ""
             errorLabel.isHidden = true
         case .success:
-            container.layer.borderColor = Theme.Colors.successColor.cgColor
+            container.layer.borderColor = DS.Colors.successColor.cgColor
             errorLabel.text = ""
             errorLabel.isHidden = true
         case .error(let errorMessage):
-            container.layer.borderColor = Theme.Colors.errorColor.cgColor
+            container.layer.borderColor = DS.Colors.errorColor.cgColor
             errorLabel.text = errorMessage
             errorLabel.isHidden = false
         }
@@ -167,27 +164,27 @@ class InputTextField: UIView {
     private func setupConstraint() {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.titleLabelLeading),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: DS.Spacing.sm),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            container.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.containerTopSpacing),
+            container.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: DS.Spacing.xs),
             container.leadingAnchor.constraint(equalTo: leadingAnchor),
             container.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            textField.topAnchor.constraint(equalTo: container.topAnchor, constant: Constants.textFieldVerticalInset),
-            textField.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: Constants.textFieldLeading),
+            textField.topAnchor.constraint(equalTo: container.topAnchor),
+            textField.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: DS.Spacing.sm),
             textField.trailingAnchor.constraint(equalTo: rightAccessory.leadingAnchor),
-            textField.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -Constants.textFieldVerticalInset),
+            textField.bottomAnchor.constraint(equalTo: container.bottomAnchor),
 
-            rightAccessory.topAnchor.constraint(equalTo: container.topAnchor, constant: Constants.rightAccessoryVerticalInset),
-            rightAccessory.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -Constants.rightAccessoryTrailing),
-            rightAccessory.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -Constants.rightAccessoryVerticalInset),
+            rightAccessory.topAnchor.constraint(equalTo: container.topAnchor, constant: DS.Spacing.sm),
+            rightAccessory.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -DS.Spacing.sm),
+            rightAccessory.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -DS.Spacing.sm),
 
-            rightAccessory.heightAnchor.constraint(equalToConstant: Constants.rightAccessorySize),
-            rightAccessory.widthAnchor.constraint(equalToConstant: Constants.rightAccessorySize),
+            rightAccessory.heightAnchor.constraint(equalToConstant: DS.Spacing.xl),
+            rightAccessory.widthAnchor.constraint(equalToConstant: DS.Spacing.xl),
 
-            errorLabel.topAnchor.constraint(equalTo: container.bottomAnchor, constant: Constants.errorLabelTopSpacing),
-            errorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.errorLabelLeading),
+            errorLabel.topAnchor.constraint(equalTo: container.bottomAnchor, constant: DS.Spacing.xs),
+            errorLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: DS.Spacing.sm),
             errorLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             errorLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
@@ -195,9 +192,9 @@ class InputTextField: UIView {
 
     private func changeSecureTextEntry() {
         if textField.isSecureTextEntry {
-            rightAccessory.setImage(UIImage(systemName: Constants.passwordInvisibleIcon), for: .normal)
+            rightAccessory.setImage(DS.Icons.passwordHidden, for: .normal)
         } else {
-            rightAccessory.setImage(UIImage(systemName: Constants.passwordVisibleIcon), for: .normal)
+            rightAccessory.setImage(DS.Icons.passwordVisible, for: .normal)
         }
     }
 
@@ -232,32 +229,5 @@ extension InputTextField: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         returnAction?(self)
         return false
-    }
-}
-
-// MARK: - Constants
-
-private extension InputTextField {
-    enum Constants {
-        static let containerBorderWidth: CGFloat = 1
-        static let containerCornerRadius: CGFloat = 15
-
-        static let titleLabelLeading: CGFloat = 10
-        static let containerTopSpacing: CGFloat = 5
-
-        static let textFieldVerticalInset: CGFloat = 0
-        static let textFieldLeading: CGFloat = 10
-
-        static let rightAccessoryVerticalInset: CGFloat = 10
-        static let rightAccessoryTrailing: CGFloat = 10
-        static let rightAccessorySize: CGFloat = 24
-
-        static let errorLabelTopSpacing: CGFloat = 5
-        static let errorLabelLeading: CGFloat = 10
-
-        static let errorLabelNumberOfLines: Int = 3
-
-        static let passwordInvisibleIcon: String = "eye.slash.fill"
-        static let passwordVisibleIcon: String = "eye.fill"
     }
 }

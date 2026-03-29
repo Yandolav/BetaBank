@@ -24,17 +24,15 @@ final class InfoStack: UIView {
     private let infoTextLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Theme.Fonts.caption
-        label.textColor = Theme.Colors.defaultTextColor
-        label.numberOfLines = Constants.infoTextNumberOfLines
+        label.apply(.caption)
+        label.numberOfLines = 0
         return label
     }()
 
     private let infoActionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Theme.Fonts.caption
-        label.textColor = Theme.Colors.accentColor
+        label.apply(.link)
         label.isUserInteractionEnabled = true
         label.accessibilityIdentifier = Constants.infoActionLabelAccessibilityIdentifier
         return label
@@ -88,7 +86,6 @@ final class InfoStack: UIView {
 private extension InfoStack {
     enum Constants {
         static let infoStackSpacing: CGFloat = 1
-        static let infoTextNumberOfLines: Int = 0
         static let infoActionLabelAccessibilityIdentifier = "Auth.InfoActionLabel"
     }
 }

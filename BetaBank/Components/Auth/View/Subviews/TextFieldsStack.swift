@@ -49,7 +49,7 @@ final class TextFieldsStack: UIView {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.spacing = Constants.textFieldsStackSpacing
+        stack.spacing = DS.Spacing.sm
         stack.distribution = .equalSpacing
         return stack
     }()
@@ -178,7 +178,7 @@ final class TextFieldsStack: UIView {
             title: Constants.firstNameTitle,
             placeholder: Constants.firstNamePlaceholder,
             returnKeyType: .next,
-            buttonImageName: Constants.clearTextIcon,
+            buttonImage: DS.Icons.clear,
             buttonAction: {
                 $0.textFieldText = ""
                 $0.changeState(state: .normal)
@@ -197,7 +197,7 @@ final class TextFieldsStack: UIView {
             title: Constants.lastNameTitle,
             placeholder: Constants.lastNamePlaceholder,
             returnKeyType: .next,
-            buttonImageName: Constants.clearTextIcon,
+            buttonImage: DS.Icons.clear,
             buttonAction: {
                 $0.textFieldText = ""
                 $0.changeState(state: .normal)
@@ -216,7 +216,7 @@ final class TextFieldsStack: UIView {
             title: Constants.emailTitle,
             placeholder: Constants.emailPlaceholder,
             returnKeyType: .next,
-            buttonImageName: Constants.clearTextIcon,
+            buttonImage: DS.Icons.clear,
             buttonAction: {
                 $0.textFieldText = ""
                 $0.changeState(state: .normal)
@@ -235,7 +235,7 @@ final class TextFieldsStack: UIView {
             title: Constants.passwordTitle,
             placeholder: Constants.passwordPlaceholder,
             returnKeyType: .done,
-            buttonImageName: Constants.passwordInvisibleIcon,
+            buttonImage: DS.Icons.passwordHidden,
             buttonAction: {
                 $0.isSecureTextEntry = !$0.isSecureTextEntry
             },
@@ -257,11 +257,6 @@ final class TextFieldsStack: UIView {
 
 private extension TextFieldsStack {
     enum Constants {
-        static let textFieldsStackSpacing: CGFloat = 10
-
-        static let clearTextIcon: String = "xmark.circle.fill"
-        static let passwordInvisibleIcon: String = "eye.slash.fill"
-
         static let firstNameTitle: String = "Имя"
         static let firstNamePlaceholder: String = "Введите ваше имя"
 

@@ -12,7 +12,7 @@
 		9B142FB32F65E9A300FB0338 /* TextFieldsStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B142FB22F65E99B00FB0338 /* TextFieldsStack.swift */; };
 		9B142FB52F65F78900FB0338 /* SubmitStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B142FB42F65F77B00FB0338 /* SubmitStack.swift */; };
 		CE765BA02F4E253C009BE102 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765B9F2F4E253C009BE102 /* InputTextField.swift */; };
-		CE765BA32F4E32C1009BE102 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765BA22F4E32C1009BE102 /* Theme.swift */; };
+		CE765BA32F4E32C1009BE102 /* DS.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765BA22F4E32C1009BE102 /* DS.swift */; };
 		CE765BA72F5077D2009BE102 /* MainAppButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765BA62F5077D1009BE102 /* MainAppButton.swift */; };
 		CE765BA92F523D35009BE102 /* FileDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE765BA82F523D35009BE102 /* FileDataStore.swift */; };
 		CEBB5D372F44AA1B00A5E08D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5D362F44AA1B00A5E08D /* AppDelegate.swift */; };
@@ -89,6 +89,14 @@
 		CEBB5DE92F45DD1C00A5E08D /* TransferProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DE82F45DD1C00A5E08D /* TransferProvider.swift */; };
 		CEBB5DEB2F45DD2800A5E08D /* TransferBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DEA2F45DD2800A5E08D /* TransferBuilder.swift */; };
 		CEBB5DED2F45DD3300A5E08D /* TransferDataFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB5DEC2F45DD3300A5E08D /* TransferDataFlow.swift */; };
+		F307E6A22F797A2500FB303D /* DSIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F307E6A12F797A2300FB303D /* DSIcons.swift */; };
+		F307E6A52F797A7D00FB303D /* UILabel+TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F307E6A42F797A7C00FB303D /* UILabel+TextStyle.swift */; };
+		F307E6AA2F797F9B00FB303D /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F307E6A92F797F9A00FB303D /* ActionButton.swift */; };
+		F307E6AD2F79806A00FB303D /* CardsCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F307E6AC2F79806900FB303D /* CardsCollectionLayout.swift */; };
+		F307E6AF2F7980BA00FB303D /* TransactionsCollectionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F307E6AE2F7980B900FB303D /* TransactionsCollectionLayout.swift */; };
+		F307E6B12F798ACC00FB303D /* DSStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F307E6B02F798ACA00FB303D /* DSStateView.swift */; };
+		F307E6B42F79ADA600FB303D /* HeaderContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F307E6B32F79AD9700FB303D /* HeaderContainerView.swift */; };
+		F307E6B62F79AF0600FB303D /* ActionsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F307E6B52F79AEFE00FB303D /* ActionsStackView.swift */; };
 		F3471C742F7486F9003553F1 /* TransactionSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3471C732F7486F6003553F1 /* TransactionSectionHeaderView.swift */; };
 		F3471C772F748AD2003553F1 /* CardsListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3471C762F748AD1003553F1 /* CardsListManager.swift */; };
 		F3471C792F748B05003553F1 /* TransactionsListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3471C782F748AFD003553F1 /* TransactionsListManager.swift */; };
@@ -113,7 +121,7 @@
 		9B142FB22F65E99B00FB0338 /* TextFieldsStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldsStack.swift; sourceTree = "<group>"; };
 		9B142FB42F65F77B00FB0338 /* SubmitStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitStack.swift; sourceTree = "<group>"; };
 		CE765B9F2F4E253C009BE102 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
-		CE765BA22F4E32C1009BE102 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		CE765BA22F4E32C1009BE102 /* DS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DS.swift; sourceTree = "<group>"; };
 		CE765BA62F5077D1009BE102 /* MainAppButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainAppButton.swift; sourceTree = "<group>"; };
 		CE765BA82F523D35009BE102 /* FileDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDataStore.swift; sourceTree = "<group>"; };
 		CEBB5D332F44AA1B00A5E08D /* BetaBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetaBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,6 +200,14 @@
 		CEBB5DE82F45DD1C00A5E08D /* TransferProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferProvider.swift; sourceTree = "<group>"; };
 		CEBB5DEA2F45DD2800A5E08D /* TransferBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferBuilder.swift; sourceTree = "<group>"; };
 		CEBB5DEC2F45DD3300A5E08D /* TransferDataFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransferDataFlow.swift; sourceTree = "<group>"; };
+		F307E6A12F797A2300FB303D /* DSIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSIcons.swift; sourceTree = "<group>"; };
+		F307E6A42F797A7C00FB303D /* UILabel+TextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+TextStyle.swift"; sourceTree = "<group>"; };
+		F307E6A92F797F9A00FB303D /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		F307E6AC2F79806900FB303D /* CardsCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCollectionLayout.swift; sourceTree = "<group>"; };
+		F307E6AE2F7980B900FB303D /* TransactionsCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsCollectionLayout.swift; sourceTree = "<group>"; };
+		F307E6B02F798ACA00FB303D /* DSStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSStateView.swift; sourceTree = "<group>"; };
+		F307E6B32F79AD9700FB303D /* HeaderContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderContainerView.swift; sourceTree = "<group>"; };
+		F307E6B52F79AEFE00FB303D /* ActionsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsStackView.swift; sourceTree = "<group>"; };
 		F3471C732F7486F6003553F1 /* TransactionSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSectionHeaderView.swift; sourceTree = "<group>"; };
 		F3471C762F748AD1003553F1 /* CardsListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsListManager.swift; sourceTree = "<group>"; };
 		F3471C782F748AFD003553F1 /* TransactionsListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsListManager.swift; sourceTree = "<group>"; };
@@ -244,6 +260,8 @@
 		CE765B9E2F4E2470009BE102 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				F307E6B02F798ACA00FB303D /* DSStateView.swift */,
+				F307E6A92F797F9A00FB303D /* ActionButton.swift */,
 				CE765B9F2F4E253C009BE102 /* InputTextField.swift */,
 				CE765BA62F5077D1009BE102 /* MainAppButton.swift */,
 			);
@@ -253,7 +271,9 @@
 		CE765BA12F4E3282009BE102 /* DesignSystem */ = {
 			isa = PBXGroup;
 			children = (
-				CE765BA22F4E32C1009BE102 /* Theme.swift */,
+				F307E6A32F797A7200FB303D /* Extensions */,
+				F307E6A12F797A2300FB303D /* DSIcons.swift */,
+				CE765BA22F4E32C1009BE102 /* DS.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -478,6 +498,8 @@
 			children = (
 				CEBB5D892F4536ED00A5E08D /* HomeView.swift */,
 				F3471C732F7486F6003553F1 /* TransactionSectionHeaderView.swift */,
+				F307E6B22F79AD1400FB303D /* Subviews */,
+				F307E6AB2F79805600FB303D /* Layouts */,
 				F3471C7A2F7492BD003553F1 /* Managers */,
 				F35966FC2F6B5F5700A6A85A /* Cells */,
 			);
@@ -538,6 +560,32 @@
 				CEBB5DE02F45DCDA00A5E08D /* TransferView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		F307E6A32F797A7200FB303D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F307E6A42F797A7C00FB303D /* UILabel+TextStyle.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F307E6AB2F79805600FB303D /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				F307E6AE2F7980B900FB303D /* TransactionsCollectionLayout.swift */,
+				F307E6AC2F79806900FB303D /* CardsCollectionLayout.swift */,
+			);
+			path = Layouts;
+			sourceTree = "<group>";
+		};
+		F307E6B22F79AD1400FB303D /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				F307E6B52F79AEFE00FB303D /* ActionsStackView.swift */,
+				F307E6B32F79AD9700FB303D /* HeaderContainerView.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		F3471C7A2F7492BD003553F1 /* Managers */ = {
@@ -707,10 +755,12 @@
 				CE765BA92F523D35009BE102 /* FileDataStore.swift in Sources */,
 				CEBB5DC92F45D00100A5E08D /* EditProfilePresenter.swift in Sources */,
 				CEBB5DA52F4558D000A5E08D /* TransactionDetailsView.swift in Sources */,
+				F307E6AF2F7980BA00FB303D /* TransactionsCollectionLayout.swift in Sources */,
 				CEBB5D8E2F45389E00A5E08D /* TransactionService.swift in Sources */,
 				CEBB5D8C2F45388F00A5E08D /* UserService.swift in Sources */,
 				CEBB5DBC2F45C81100A5E08D /* SettingsProvider.swift in Sources */,
 				CEBB5D882F452DF900A5E08D /* HomeDataFlow.swift in Sources */,
+				F307E6B12F798ACC00FB303D /* DSStateView.swift in Sources */,
 				CEBB5DB42F45C7DE00A5E08D /* SettingsViewController.swift in Sources */,
 				CEBB5DA02F454F6200A5E08D /* CardDetailsView.swift in Sources */,
 				F35966F52F6B2D2700A6A85A /* ValidationWorker.swift in Sources */,
@@ -722,6 +772,7 @@
 				CEBB5D582F44E4E300A5E08D /* AuthViewController.swift in Sources */,
 				CEBB5D842F452D6700A5E08D /* HomeProvider.swift in Sources */,
 				F3471C772F748AD2003553F1 /* CardsListManager.swift in Sources */,
+				F307E6B42F79ADA600FB303D /* HeaderContainerView.swift in Sources */,
 				F35966E42F6A163300A6A85A /* TransactionNetworkService.swift in Sources */,
 				F35966F02F6B1D3C00A6A85A /* CardDTO.swift in Sources */,
 				CEBB5D6B2F45050000A5E08D /* Storage.swift in Sources */,
@@ -730,6 +781,7 @@
 				CEBB5D602F44EB6000A5E08D /* AuthDataFlow.swift in Sources */,
 				F35967022F6B5F8600A6A85A /* TransactionCellViewModel.swift in Sources */,
 				9B142FB32F65E9A300FB0338 /* TextFieldsStack.swift in Sources */,
+				F307E6B62F79AF0600FB303D /* ActionsStackView.swift in Sources */,
 				CEBB5DDE2F45D79500A5E08D /* AddCardDataFlow.swift in Sources */,
 				CEBB5D712F450C9000A5E08D /* UserStorage.swift in Sources */,
 				CEBB5D6D2F4506FE00A5E08D /* AuthService.swift in Sources */,
@@ -748,19 +800,22 @@
 				CEBB5D932F45447A00A5E08D /* DependencyContainer.swift in Sources */,
 				CEBB5DDA2F45D77C00A5E08D /* AddCardProvider.swift in Sources */,
 				CEBB5DA22F45525C00A5E08D /* CardDetailsDataFlow.swift in Sources */,
-				CE765BA32F4E32C1009BE102 /* Theme.swift in Sources */,
+				CE765BA32F4E32C1009BE102 /* DS.swift in Sources */,
 				CEBB5D982F454F2700A5E08D /* CardDetailsInteractor.swift in Sources */,
 				CEBB5D732F450CC400A5E08D /* User.swift in Sources */,
 				CEBB5D8A2F4536ED00A5E08D /* HomeView.swift in Sources */,
 				CEBB5D372F44AA1B00A5E08D /* AppDelegate.swift in Sources */,
 				CEBB5DAF2F45590C00A5E08D /* TransactionDetailsProvider.swift in Sources */,
+				F307E6A22F797A2500FB303D /* DSIcons.swift in Sources */,
 				CEBB5DEB2F45DD2800A5E08D /* TransferBuilder.swift in Sources */,
 				CEBB5DC52F45CFEB00A5E08D /* EditProfileViewController.swift in Sources */,
 				CEBB5D7B2F450E2700A5E08D /* Transaction.swift in Sources */,
+				F307E6A52F797A7D00FB303D /* UILabel+TextStyle.swift in Sources */,
 				CEBB5DAD2F4558FF00A5E08D /* TransactionDetailsDataFlow.swift in Sources */,
 				CEBB5DE12F45DCDA00A5E08D /* TransferView.swift in Sources */,
 				CEBB5D962F454F1200A5E08D /* CardDetailsViewController.swift in Sources */,
 				9B142FB52F65F78900FB0338 /* SubmitStack.swift in Sources */,
+				F307E6AA2F797F9B00FB303D /* ActionButton.swift in Sources */,
 				CEBB5D392F44AA1B00A5E08D /* SceneDelegate.swift in Sources */,
 				CEBB5DBE2F45C81D00A5E08D /* SettingsBuilder.swift in Sources */,
 				CEBB5D752F450DCB00A5E08D /* CardStorage.swift in Sources */,
@@ -788,6 +843,7 @@
 				CEBB5D652F44FF2B00A5E08D /* AuthView.swift in Sources */,
 				CEBB5DC32F45CFE000A5E08D /* EditProfileView.swift in Sources */,
 				CEBB5DB82F45C7F700A5E08D /* SettingsInteractor.swift in Sources */,
+				F307E6AD2F79806A00FB303D /* CardsCollectionLayout.swift in Sources */,
 				CEBB5DCD2F45D01800A5E08D /* EditProfileBuilder.swift in Sources */,
 				F35966EE2F6B1CDE00A6A85A /* UserDTO.swift in Sources */,
 			);

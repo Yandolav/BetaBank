@@ -215,4 +215,48 @@ TransactionCellViewModel: id, date, amountMinor, direction, status, comment
 Авторизоваться на экране Auth — после успешного входа откроется HomeViewController, 
 в консоли Xcode будут выведены загруженные User, Cards и Transactions.
 
+---
 
+### Lab-5 — Экран списка (UIKit)
+
+**Подход к списку**
+
+Использован **UICollectionView** в двух местах:
+- **Карты** — горизонтальный `UICollectionViewFlowLayout`, управляется `CardsListManager`
+- **Транзакции** — вертикальный `UICollectionViewCompositionalLayout` с секциями по датам, управляется `TransactionsListManager`
+
+Оба списка работают через отдельные менеджеры (`CardsListManager`, `TransactionsListManager`), которые берут на себя datasource и delegate — `HomeViewController` не содержит бизнес-логики и не работает с данными напрямую.
+
+Такой подход выбран, чтобы:
+- избежать проблем с вложенными скроллами (карты и транзакции — независимые `UICollectionView`)
+- использовать `UICollectionViewDiffableDataSource` для анимированных обновлений без `reloadData`
+- сохранить чистую архитектуру: каждый менеджер — отдельная сущность с единственной ответственностью
+
+
+**Как открыть экран списка**
+
+Запустить приложение → авторизоваться на экране Auth → после успешного входа автоматически откроется `HomeViewController` с картами и транзакциями.
+
+
+**Как увидеть состояния**
+
+- **loading** — показывается автоматически при каждом запросе данных (на старте и при pull-to-refresh)
+- **content** — показывается после успешной загрузки карт и транзакций
+- **empty** — показывается если сервер вернул пустые массивы карт и транзакций одновременно
+- **error** — показывается при сетевой ошибке; на экране есть кнопка «Повторить» для повторного запроса
+
+
+**Что происходит по tap**
+
+- **Tap по карте** → открывается `CardDetailsViewController` (заглушка)
+- **Tap по транзакции** → открывается `TransactionDetailsViewController` (заглушка)
+- **Кнопка профиля** → открывается `SettingsViewController` (заглушка)
+- **Кнопка «Отправить»** → открывается `TransferViewController` (заглушка)
+- **Кнопка «Добавить карту»** → открывается `AddCardViewController` (заглушка)
+
+
+**Дополнительные задания**
+
+- **D1. Pull-to-refresh** — реализован через `UIRefreshControl` на коллекции транзакций
+- **D2. Поиск** — реализован через `UISearchBar`; фильтрация происходит на уровне `CellViewModel` без перезапроса сети
+- **D4. Diffable DataSource** — реализован в `TransactionsListManager` через `UICollectionViewDiffableDataSource` с группировкой по датам

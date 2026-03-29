@@ -11,6 +11,7 @@ final class TransactionDetailsViewController: UIViewController {
     // MARK: Public properties
 
     var interactor: TransactionDetailsViewControllerOutput?
+    weak var coordinator: Coordinator?
 
     // MARK: Lifecycle
 

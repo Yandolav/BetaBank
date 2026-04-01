@@ -66,8 +66,22 @@ final class HomeView: UIView {
         return rc
     }()
 
-    private let stateView: DSStateView = {
-        let view = DSStateView()
+    private let loadingView: DSLoadingView = {
+        let view = DSLoadingView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        return view
+    }()
+
+    private let emptyView: DSEmptyView = {
+        let view = DSEmptyView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        return view
+    }()
+
+    private let errorView: DSErrorView = {
+        let view = DSErrorView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isHidden = true
         return view
@@ -97,24 +111,40 @@ final class HomeView: UIView {
         case .loading:
             setContentVisible(false)
             headerView.isProfileHidden = true
-            stateView.setState(.loading())
+            loadingView.configure(with: .init())
+            loadingView.show()
+            emptyView.isHidden = true
+            errorView.isHidden = true
 
         case .content:
             setContentVisible(true)
             headerView.isProfileHidden = false
-            stateView.setState(.hidden)
+            loadingView.hide()
+            emptyView.isHidden = true
+            errorView.isHidden = true
             refreshControl.endRefreshing()
 
         case .empty:
             setContentVisible(false)
             headerView.isProfileHidden = true
-            stateView.setState(.empty())
+            loadingView.hide()
+            emptyView.configure(with: .init())
+            emptyView.isHidden = false
+            errorView.isHidden = true
             refreshControl.endRefreshing()
 
         case .error(let message):
             setContentVisible(false)
             headerView.isProfileHidden = true
-            stateView.setState(.error(message: message))
+            loadingView.hide()
+            emptyView.isHidden = true
+            errorView.configure(
+                with: .init(
+                    message: message,
+                    onRetry: { [weak self] in self?.delegate?.didTapRetry() }
+                )
+            )
+            errorView.isHidden = false
             refreshControl.endRefreshing()
         }
     }
@@ -127,16 +157,21 @@ final class HomeView: UIView {
         transactionsCollectionView.refreshControl = refreshControl
 
         headerView.onProfileTap = { [weak self] in self?.delegate?.didTapProfile() }
-        actionsView.onSendTap = { [weak self] in self?.delegate?.didTapSend() }
-        actionsView.onAddCardTap = { [weak self] in self?.delegate?.didTapAddCard() }
-        stateView.onRetry = { [weak self] in self?.delegate?.didTapRetry() }
+        actionsView.configure(
+            with: .init(
+                onSendTap: { [weak self] in self?.delegate?.didTapSend() },
+                onAddCardTap: { [weak self] in self?.delegate?.didTapAddCard() }
+            )
+        )
 
         addSubview(headerView)
         addSubview(cardsCollectionView)
         addSubview(actionsView)
         addSubview(searchBar)
         addSubview(transactionsCollectionView)
-        addSubview(stateView)
+        addSubview(loadingView)
+        addSubview(emptyView)
+        addSubview(errorView)
     }
 
     private func setupConstraints() {
@@ -166,9 +201,17 @@ final class HomeView: UIView {
             transactionsCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             transactionsCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
 
-            stateView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: DS.Spacing.xxl),
-            stateView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -DS.Spacing.xxl),
-            stateView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            loadingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: DS.Spacing.xxl),
+            loadingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -DS.Spacing.xxl),
+            loadingView.centerYAnchor.constraint(equalTo: centerYAnchor),
+
+            emptyView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: DS.Spacing.xxl),
+            emptyView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -DS.Spacing.xxl),
+            emptyView.centerYAnchor.constraint(equalTo: centerYAnchor),
+
+            errorView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: DS.Spacing.xxl),
+            errorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -DS.Spacing.xxl),
+            errorView.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 

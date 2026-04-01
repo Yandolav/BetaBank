@@ -1,16 +1,16 @@
 import UIKit
 
-class MainAppButton: UIControl {
+struct DSMainAppButtonViewModel {
+    let title: String
+}
 
-    // MARK: Public properties
-
-    var currentState: MainAppButtonState = .enable {
-        didSet {
-            changeState()
-        }
-    }
+class DSMainAppButton: UIControl {
 
     // MARK: Private properties
+
+    private var currentState: DSMainAppButtonState = .enable {
+        didSet { changeState() }
+    }
 
     private let title: UILabel = {
         let label = UILabel()
@@ -34,15 +34,18 @@ class MainAppButton: UIControl {
 
     // MARK: Public methods
 
-    func changeText(text: String) {
-        title.text = text
+    func configure(with viewModel: DSMainAppButtonViewModel) {
+        title.text = viewModel.title
+    }
+
+    func setState(_ state: DSMainAppButtonState) {
+        currentState = state
     }
 
     // MARK: Private methods
 
     private func setupView() {
         self.backgroundColor = DS.Colors.accentColor
-        self.isEnabled = true
         self.layer.cornerRadius = DS.Radius.m
         self.addSubview(title)
     }
@@ -83,8 +86,8 @@ class MainAppButton: UIControl {
 
 // MARK: - MainAppButtonState
 
-extension MainAppButton {
-    enum MainAppButtonState {
+extension DSMainAppButton {
+    enum DSMainAppButtonState {
         case enable
         case disable
         case loading
@@ -93,7 +96,7 @@ extension MainAppButton {
 
 // MARK: - Constants
 
-private extension MainAppButton {
+private extension DSMainAppButton {
     enum Constants {
         static let loadingAnimationDuration: TimeInterval = 2
         static let loadingAnimationDelay: TimeInterval = 0

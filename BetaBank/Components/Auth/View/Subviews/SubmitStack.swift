@@ -10,11 +10,6 @@ final class SubmitStack: UIView {
 
     weak var delegate: SubmitStackDelegate?
 
-    var submitButtonCurrentState: MainAppButton.MainAppButtonState {
-        get { submitButton.currentState }
-        set { submitButton.currentState = newValue }
-    }
-
     // MARK: Private propertis
 
     private let submitStack: UIStackView = {
@@ -26,8 +21,8 @@ final class SubmitStack: UIView {
         return stack
     }()
 
-    private let submitButton: MainAppButton = {
-        let button = MainAppButton()
+    private let submitButton: DSMainAppButton = {
+        let button = DSMainAppButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.accessibilityIdentifier = Constants.submitButtonAccessibilityIdentifier
         return button
@@ -55,7 +50,7 @@ final class SubmitStack: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: Public method
+    // MARK: Public methods
 
     func configureErrorLabel(isHidden: Bool, errorMessage: String) {
         submitErrorLabel.text = errorMessage
@@ -63,7 +58,11 @@ final class SubmitStack: UIView {
     }
 
     func changeSubmitButtonText(text: String) {
-        submitButton.changeText(text: text)
+        submitButton.configure(with: .init(title: text))
+    }
+
+    func setSubmitButtonState(_ state: DSMainAppButton.DSMainAppButtonState) {
+        submitButton.setState(state)
     }
 
     // MARK: Private methods

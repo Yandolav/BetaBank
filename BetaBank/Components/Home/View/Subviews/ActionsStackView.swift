@@ -1,23 +1,28 @@
 import UIKit
 
+struct ActionsStackViewModel {
+    let onSendTap: () -> Void
+    let onAddCardTap: () -> Void
+}
+
 final class ActionsStackView: UIView {
-
-    // MARK: Public properties
-
-    var onSendTap: (() -> Void)?
-    var onAddCardTap: (() -> Void)?
 
     // MARK: Private properties
 
-    private let sendButton: ActionButton = {
-        let button = ActionButton(icon: DS.Icons.send, title: "Отправить")
+    private var onSendTap: (() -> Void)?
+    private var onAddCardTap: (() -> Void)?
+
+    private let sendButton: DSActionButton = {
+        let button = DSActionButton(style: .tinted)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.configure(with: .init(icon: DS.Icons.send, title: "Отправить"))
         return button
     }()
 
-    private let addCardButton: ActionButton = {
-        let button = ActionButton(icon: DS.Icons.add, title: "Добавить карту")
+    private let addCardButton: DSActionButton = {
+        let button = DSActionButton(style: .tinted)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.configure(with: .init(icon: DS.Icons.add, title: "Добавить карту"))
         return button
     }()
 
@@ -40,6 +45,13 @@ final class ActionsStackView: UIView {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: Public methods
+
+    func configure(with viewModel: ActionsStackViewModel) {
+        onSendTap = viewModel.onSendTap
+        onAddCardTap = viewModel.onAddCardTap
     }
 
     // MARK: Private methods

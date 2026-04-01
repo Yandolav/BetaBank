@@ -54,31 +54,30 @@ final class TextFieldsStack: UIView {
         return stack
     }()
 
-    private let firstNameTextField: InputTextField = {
-        let textField = InputTextField()
+    private let firstNameTextField: DSInputTextField = {
+        let textField = DSInputTextField(style: .plain)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.accessibilityIdentifier = Constants.FirstNameTextFieldAccessibilityIdentifier
         return textField
     }()
 
-    private let lastNameTextField: InputTextField = {
-        let textField = InputTextField()
+    private let lastNameTextField: DSInputTextField = {
+        let textField = DSInputTextField(style: .plain)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.accessibilityIdentifier = Constants.LastNameTextFieldAccessibilityIdentifier
         return textField
     }()
 
-    private let emailTextField: InputTextField = {
-        let textField = InputTextField()
+    private let emailTextField: DSInputTextField = {
+        let textField = DSInputTextField(style: .plain)
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.accessibilityIdentifier = Constants.EmailTextFieldAccessibilityIdentifier
         return textField
     }()
 
-    private let passwordTextField: InputTextField = {
-        let textField = InputTextField()
+    private let passwordTextField: DSInputTextField = {
+        let textField = DSInputTextField(style: .secure)
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.isSecureTextEntry = true
         textField.accessibilityIdentifier = Constants.PasswordTextFieldAccessibilityIdentifier
         return textField
     }()
@@ -98,39 +97,23 @@ final class TextFieldsStack: UIView {
 
     // MARK: Public methods
 
-    func updateFirstNameTextFieldsState(state: InputTextField.TextFieldState) {
-        if case .success = state {
-            validateFirstName = true
-        } else {
-            validateFirstName = false
-        }
+    func updateFirstNameTextFieldsState(state: DSInputTextField.TextFieldState) {
+        if case .success = state { validateFirstName = true } else { validateFirstName = false }
         firstNameTextField.changeState(state: state)
     }
 
-    func updateLastNameTextFieldsState(state: InputTextField.TextFieldState) {
-        if case .success = state {
-            validateLastName = true
-        } else {
-            validateLastName = false
-        }
+    func updateLastNameTextFieldsState(state: DSInputTextField.TextFieldState) {
+        if case .success = state { validateLastName = true } else { validateLastName = false }
         lastNameTextField.changeState(state: state)
     }
 
-    func updateEmailTextFieldsState(state: InputTextField.TextFieldState) {
-        if case .success = state {
-            validateEmail = true
-        } else {
-            validateEmail = false
-        }
+    func updateEmailTextFieldsState(state: DSInputTextField.TextFieldState) {
+        if case .success = state { validateEmail = true } else { validateEmail = false }
         emailTextField.changeState(state: state)
     }
 
-    func updatePasswordTextFieldsState(state: InputTextField.TextFieldState) {
-        if case .success = state {
-            validatePassword = true
-        } else {
-            validatePassword = false
-        }
+    func updatePasswordTextFieldsState(state: DSInputTextField.TextFieldState) {
+        if case .success = state { validatePassword = true } else { validatePassword = false }
         passwordTextField.changeState(state: state)
     }
 
@@ -140,11 +123,11 @@ final class TextFieldsStack: UIView {
     }
 
     func clearTextFields() {
-        textFieldsStack.arrangedSubviews.forEach { ($0 as? InputTextField)?.textFieldText = "" }
+        textFieldsStack.arrangedSubviews.forEach { ($0 as? DSInputTextField)?.textFieldText = "" }
     }
 
     func changeNormalModeTextFields() {
-        textFieldsStack.arrangedSubviews.forEach { ($0 as? InputTextField)?.changeState(state: .normal) }
+        textFieldsStack.arrangedSubviews.forEach { ($0 as? DSInputTextField)?.changeState(state: .normal) }
     }
 
     func switchAllFlagsToFalse() {
@@ -174,82 +157,40 @@ final class TextFieldsStack: UIView {
     }
 
     private func setupTextFields() {
-        firstNameTextField.configure(
+        firstNameTextField.configure(with: .init(
             title: Constants.firstNameTitle,
             placeholder: Constants.firstNamePlaceholder,
             returnKeyType: .next,
-            buttonImage: DS.Icons.clear,
-            buttonAction: {
-                $0.textFieldText = ""
-                $0.changeState(state: .normal)
-            },
-            returnAction: { [weak self] _ in
-                guard let self else { return }
-                lastNameTextField.show()
-            },
-            validateAction: { [weak self] in
-                guard let self else { return }
-                delegate?.firstNameTextFieldValidate(text: $0.textFieldText)
-            }
-        )
+            onReturn: { [weak self] _ in self?.lastNameTextField.show() },
+            onTextChange: { [weak self] in self?.delegate?.firstNameTextFieldValidate(text: $0.textFieldText) }
+        ))
 
-        lastNameTextField.configure(
+        lastNameTextField.configure(with: .init(
             title: Constants.lastNameTitle,
             placeholder: Constants.lastNamePlaceholder,
             returnKeyType: .next,
-            buttonImage: DS.Icons.clear,
-            buttonAction: {
-                $0.textFieldText = ""
-                $0.changeState(state: .normal)
-            },
-            returnAction: { [weak self] _ in
-                guard let self else { return }
-                emailTextField.show()
-            },
-            validateAction: { [weak self] in
-                guard let self else { return }
-                delegate?.lastNameTextFieldValidate(text: $0.textFieldText)
-            }
-        )
+            onReturn: { [weak self] _ in self?.emailTextField.show() },
+            onTextChange: { [weak self] in self?.delegate?.lastNameTextFieldValidate(text: $0.textFieldText) }
+        ))
 
-        emailTextField.configure(
+        emailTextField.configure(with: .init(
             title: Constants.emailTitle,
             placeholder: Constants.emailPlaceholder,
             returnKeyType: .next,
-            buttonImage: DS.Icons.clear,
-            buttonAction: {
-                $0.textFieldText = ""
-                $0.changeState(state: .normal)
-            },
-            returnAction: { [weak self] _ in
-                guard let self else { return }
-                passwordTextField.show()
-            },
-            validateAction: { [weak self] in
-                guard let self else { return }
-                delegate?.emailTextFieldValidate(text: $0.textFieldText)
-            }
-        )
+            onReturn: { [weak self] _ in self?.passwordTextField.show() },
+            onTextChange: { [weak self] in self?.delegate?.emailTextFieldValidate(text: $0.textFieldText) }
+        ))
 
-        passwordTextField.configure(
+        passwordTextField.configure(with: .init(
             title: Constants.passwordTitle,
             placeholder: Constants.passwordPlaceholder,
             returnKeyType: .done,
-            buttonImage: DS.Icons.passwordHidden,
-            buttonAction: {
-                $0.isSecureTextEntry = !$0.isSecureTextEntry
-            },
-            returnAction: { [weak self] in
-                guard let self else { return }
-
+            onReturn: { [weak self] in
                 $0.hide()
-                delegate?.sumbit()
+                self?.delegate?.sumbit()
             },
-            validateAction: { [weak self] in
-                guard let self else { return }
-                delegate?.passwordTextFieldValidate(text: $0.textFieldText)
-            }
-        )
+            onTextChange: { [weak self] in self?.delegate?.passwordTextFieldValidate(text: $0.textFieldText) }
+        ))
     }
 }
 
@@ -257,17 +198,17 @@ final class TextFieldsStack: UIView {
 
 private extension TextFieldsStack {
     enum Constants {
-        static let firstNameTitle: String = "Имя"
-        static let firstNamePlaceholder: String = "Введите ваше имя"
+        static let firstNameTitle = "Имя"
+        static let firstNamePlaceholder = "Введите ваше имя"
 
-        static let lastNameTitle: String = "Фамилия"
-        static let lastNamePlaceholder: String = "Введите вашу фамилию"
+        static let lastNameTitle = "Фамилия"
+        static let lastNamePlaceholder = "Введите вашу фамилию"
 
-        static let emailTitle: String = "Почта"
-        static let emailPlaceholder: String = "Введите вашу почту"
+        static let emailTitle = "Почта"
+        static let emailPlaceholder = "Введите вашу почту"
 
-        static let passwordTitle: String = "Пароль"
-        static let passwordPlaceholder: String = "Введите ваш пароль"
+        static let passwordTitle = "Пароль"
+        static let passwordPlaceholder = "Введите ваш пароль"
 
         static let FirstNameTextFieldAccessibilityIdentifier = "Auth.FirstNameTextField"
         static let LastNameTextFieldAccessibilityIdentifier = "Auth.LastNameTextField"

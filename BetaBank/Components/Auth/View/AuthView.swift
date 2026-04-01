@@ -100,22 +100,22 @@ final class AuthView: UIView {
         enableSubmitButton()
     }
 
-    func validateFirstNameField(textFieldState: InputTextField.TextFieldState) {
+    func validateFirstNameField(textFieldState: DSInputTextField.TextFieldState) {
         textFieldsStack.updateFirstNameTextFieldsState(state: textFieldState)
         enableSubmitButton()
     }
 
-    func validateLastNameField(textFieldState: InputTextField.TextFieldState) {
+    func validateLastNameField(textFieldState: DSInputTextField.TextFieldState) {
         textFieldsStack.updateLastNameTextFieldsState(state: textFieldState)
         enableSubmitButton()
     }
 
-    func validateEmailField(textFieldState: InputTextField.TextFieldState) {
+    func validateEmailField(textFieldState: DSInputTextField.TextFieldState) {
         textFieldsStack.updateEmailTextFieldsState(state: textFieldState)
         enableSubmitButton()
     }
 
-    func validatePasswordField(textFieldState: InputTextField.TextFieldState) {
+    func validatePasswordField(textFieldState: DSInputTextField.TextFieldState) {
         textFieldsStack.updatePasswordTextFieldsState(state: textFieldState)
         enableSubmitButton()
     }
@@ -228,12 +228,12 @@ final class AuthView: UIView {
         switch currentState {
         case .singIn:
             textFieldsStack.passwordAndEmailTextFieldsValid
-            ? (submitStack.submitButtonCurrentState = .enable)
-            : (submitStack.submitButtonCurrentState = .disable)
+            ? submitStack.setSubmitButtonState(.enable)
+            : submitStack.setSubmitButtonState(.disable)
         case .signUp:
             textFieldsStack.allTextFieldsValid
-            ? (submitStack.submitButtonCurrentState = .enable)
-            : (submitStack.submitButtonCurrentState = .disable)
+            ? submitStack.setSubmitButtonState(.enable)
+            : submitStack.setSubmitButtonState(.disable)
         }
     }
 
@@ -248,7 +248,7 @@ final class AuthView: UIView {
     }
 
     @objc private func submit() {
-        submitStack.submitButtonCurrentState = .loading
+        submitStack.setSubmitButtonState(.loading)
         self.isUserInteractionEnabled = false
         switch currentState {
         case .singIn:
@@ -319,7 +319,6 @@ extension AuthView: TextFieldsStackDelegate {
     }
     
     func sumbit() {
-        guard submitStack.submitButtonCurrentState != .enable else { return }
         submit()
     }
 }

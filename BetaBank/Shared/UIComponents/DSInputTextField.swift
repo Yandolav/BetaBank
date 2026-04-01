@@ -1,17 +1,32 @@
 import UIKit
 
-class InputTextField: UIView {
+struct DSInputTextFieldViewModel {
+    let title: String
+    let placeholder: String
+    let returnKeyType: UIReturnKeyType
+    let onReturn: ((DSInputTextField) -> Void)?
+    let onTextChange: ((DSInputTextField) -> Void)?
 
-    // MARK: Public properties
+    init(
+        title: String,
+        placeholder: String,
+        returnKeyType: UIReturnKeyType = .next,
+        onReturn: ((DSInputTextField) -> Void)? = nil,
+        onTextChange: ((DSInputTextField) -> Void)? = nil
+    ) {
+        self.title = title
+        self.placeholder = placeholder
+        self.returnKeyType = returnKeyType
+        self.onReturn = onReturn
+        self.onTextChange = onTextChange
+    }
+}
 
-    var isSecureTextEntry: Bool {
-        get {
-            textField.isSecureTextEntry
-        }
-        set {
-            textField.isSecureTextEntry = newValue
-            changeSecureTextEntry()
-        }
+class DSInputTextField: UIView {
+
+    enum Style {
+        case plain
+        case secure
     }
 
     var textFieldText: String? {
@@ -19,7 +34,9 @@ class InputTextField: UIView {
         set { textField.text = newValue }
     }
 
-    // MARK: Private properties
+    private let style: Style
+    private var onReturn: ((DSInputTextField) -> Void)?
+    private var onTextChange: ((DSInputTextField) -> Void)?
 
     private let container: UIView = {
         let view = UIView()
@@ -45,7 +62,6 @@ class InputTextField: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.tintColor = DS.Colors.accentColor
-        button.isHidden = true
         return button
     }()
 
@@ -65,16 +81,14 @@ class InputTextField: UIView {
         return label
     }()
 
-    private var buttonAction: ((InputTextField) -> Void)?
-    private var returnAction: ((InputTextField) -> Void)?
-    private var validateAction: ((InputTextField) -> Void)?
-
     // MARK: Init
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init(style: Style = .plain) {
+        self.style = style
+        super.init(frame: .zero)
         setupView()
         setupConstraint()
+        applyStyle()
     }
 
     required init?(coder: NSCoder) {
@@ -83,38 +97,20 @@ class InputTextField: UIView {
 
     // MARK: Public methods
 
-    func configure(
-        title: String,
-        placeholder: String,
-        returnKeyType: UIReturnKeyType,
-        buttonImage: UIImage? = nil,
-        buttonAction: ((InputTextField) -> Void)? = nil,
-        returnAction: ((InputTextField) -> Void)? = nil,
-        validateAction: ((InputTextField) -> Void)? = nil
-    ) {
-        titleLabel.text = title
+    func configure(with viewModel: DSInputTextFieldViewModel) {
+        titleLabel.text = viewModel.title
 
-        let text = NSAttributedString(
-            string: placeholder,
+        textField.attributedPlaceholder = NSAttributedString(
+            string: viewModel.placeholder,
             attributes: [
                 .font: DS.Fonts.body,
                 .foregroundColor: DS.Colors.placeholderTextColor
             ]
         )
-        textField.attributedPlaceholder = text
+        textField.returnKeyType = viewModel.returnKeyType
 
-        textField.returnKeyType = returnKeyType
-
-        if let buttonImage {
-            rightAccessory.setImage(buttonImage, for: .normal)
-            rightAccessory.isHidden = false
-        } else {
-            rightAccessory.isHidden = true
-        }
-
-        self.buttonAction = buttonAction
-        self.returnAction = returnAction
-        self.validateAction = validateAction
+        onReturn = viewModel.onReturn
+        onTextChange = viewModel.onTextChange
 
         changeState(state: .normal)
     }
@@ -158,7 +154,18 @@ class InputTextField: UIView {
         container.addSubview(rightAccessory)
 
         textField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
-        rightAccessory.addTarget(self, action: #selector(tapButton), for: .touchUpInside)
+        rightAccessory.addTarget(self, action: #selector(accessoryTapped), for: .touchUpInside)
+    }
+
+    private func applyStyle() {
+        switch style {
+        case .plain:
+            textField.isSecureTextEntry = false
+            rightAccessory.setImage(DS.Icons.clear, for: .normal)
+        case .secure:
+            textField.isSecureTextEntry = true
+            rightAccessory.setImage(DS.Icons.passwordHidden, for: .normal)
+        }
     }
 
     private func setupConstraint() {
@@ -179,7 +186,6 @@ class InputTextField: UIView {
             rightAccessory.topAnchor.constraint(equalTo: container.topAnchor, constant: DS.Spacing.sm),
             rightAccessory.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -DS.Spacing.sm),
             rightAccessory.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -DS.Spacing.sm),
-
             rightAccessory.heightAnchor.constraint(equalToConstant: DS.Spacing.xl),
             rightAccessory.widthAnchor.constraint(equalToConstant: DS.Spacing.xl),
 
@@ -190,26 +196,26 @@ class InputTextField: UIView {
         ])
     }
 
-    private func changeSecureTextEntry() {
-        if textField.isSecureTextEntry {
-            rightAccessory.setImage(DS.Icons.passwordHidden, for: .normal)
-        } else {
-            rightAccessory.setImage(DS.Icons.passwordVisible, for: .normal)
+    @objc private func accessoryTapped() {
+        switch style {
+        case .plain:
+            textFieldText = ""
+            changeState(state: .normal)
+        case .secure:
+            textField.isSecureTextEntry.toggle()
+            let icon = textField.isSecureTextEntry ? DS.Icons.passwordHidden : DS.Icons.passwordVisible
+            rightAccessory.setImage(icon, for: .normal)
         }
     }
 
-    @objc private func tapButton() {
-        buttonAction?(self)
-    }
-
     @objc private func textDidChange() {
-        validateAction?(self)
+        onTextChange?(self)
     }
 }
 
 // MARK: - TextFieldState
 
-extension InputTextField {
+extension DSInputTextField {
     enum TextFieldState {
         case normal
         case error(errorMessage: String)
@@ -219,7 +225,7 @@ extension InputTextField {
 
 // MARK: - UITextFieldDelegate
 
-extension InputTextField: UITextFieldDelegate {
+extension DSInputTextField: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         if (textField.text ?? "").isEmpty {
             changeState(state: .normal)
@@ -227,7 +233,7 @@ extension InputTextField: UITextFieldDelegate {
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        returnAction?(self)
+        onReturn?(self)
         return false
     }
 }

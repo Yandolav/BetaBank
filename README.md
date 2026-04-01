@@ -276,13 +276,17 @@ Shadow: card, modal
 
 #### Компоненты
 
-MainAppButton — кнопка с состояниями enable / disable / loading
+DSMainAppButton — кнопка с состояниями enable / disable / loading
 
-InputTextField — поле с заголовком, плейсхолдером, иконкой и состояниями normal / success / error
+DSInputTextField — поле с заголовком, плейсхолдером, иконкой и состояниями normal / success / error
 
-DSStateView — единый компонент для состояний loading / error (+retry) / empty
+DSErrorView - экран с ошибкой
 
-ActionButton — кнопка действия с иконкой из DS.Icons и заголовком
+DSLoadingView - загрузочный экран
+
+DSEmptyView - пустой экран
+
+DSActionButton — кнопка действия с иконкой из DS.Icons и заголовком
 
 
 

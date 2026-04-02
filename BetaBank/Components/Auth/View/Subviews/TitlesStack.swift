@@ -8,7 +8,7 @@ final class TitlesStack: UIView {
         let stack = UIStackView()
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.axis = .vertical
-        stack.spacing = Constants.titlesStackSpacing
+        stack.spacing = DS.Spacing.sm
         stack.distribution = .equalSpacing
         return stack
     }()
@@ -16,9 +16,8 @@ final class TitlesStack: UIView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = Theme.Colors.blackText
-        label.font = Theme.Fonts.title
-        label.numberOfLines = Constants.titlesNumberOfLines
+        label.apply(.title)
+        label.numberOfLines = 0
         label.textAlignment = .center
         return label
     }()
@@ -27,9 +26,8 @@ final class TitlesStack: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
-        label.font = Theme.Fonts.body
-        label.textColor = Theme.Colors.defaultTextColor
-        label.numberOfLines = Constants.titlesNumberOfLines
+        label.apply(.body)
+        label.numberOfLines = 0
         return label
     }()
 
@@ -67,14 +65,5 @@ final class TitlesStack: UIView {
             titlesStack.trailingAnchor.constraint(equalTo: trailingAnchor),
             titlesStack.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-    }
-}
-
-// MARK: - Constants
-
-private extension TitlesStack {
-    enum Constants {
-        static let titlesStackSpacing: CGFloat = 10
-        static let titlesNumberOfLines: Int = 0
     }
 }

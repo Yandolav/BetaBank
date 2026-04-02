@@ -9,15 +9,14 @@ final class TransactionSectionHeaderView: UICollectionReusableView {
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: Constants.dateFontSize, weight: .semibold)
-        label.textColor = Theme.Colors.defaultTextColor
+        label.apply(.caption)
         return label
     }()
 
     private let separatorLine: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = Theme.Colors.defaultBorderColor.withAlphaComponent(Constants.separatorAlpha)
+        view.backgroundColor = DS.Colors.defaultBorderColor.withAlphaComponent(Constants.separatorAlpha)
         return view
     }()
 
@@ -25,7 +24,7 @@ final class TransactionSectionHeaderView: UICollectionReusableView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = Theme.Colors.surfaceColor
+        backgroundColor = DS.Colors.surfaceColor
         setupView()
         setupConstraints()
     }
@@ -49,8 +48,8 @@ final class TransactionSectionHeaderView: UICollectionReusableView {
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            dateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.horizontalInset),
-            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.horizontalInset),
+            dateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: DS.Spacing.m),
+            dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -DS.Spacing.m),
             dateLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             separatorLine.heightAnchor.constraint(equalToConstant: Constants.separatorHeight),
             separatorLine.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -64,8 +63,6 @@ final class TransactionSectionHeaderView: UICollectionReusableView {
 
 private extension TransactionSectionHeaderView {
     enum Constants {
-        static let dateFontSize: CGFloat = 13
-        static let horizontalInset: CGFloat = 16
         static let separatorHeight: CGFloat = 0.5
         static let separatorAlpha: CGFloat = 0.4
     }

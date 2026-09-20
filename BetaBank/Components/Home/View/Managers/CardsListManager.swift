@@ -19,7 +19,7 @@ final class CardsListManager: NSObject {
 
     func bind(to collectionView: UICollectionView) {
         self.collectionView = collectionView
-        collectionView.collectionViewLayout = makeLayout()
+        collectionView.collectionViewLayout = CardsCollectionLayout()
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(
@@ -31,22 +31,6 @@ final class CardsListManager: NSObject {
     func setItems(_ items: [CardCellViewModel]) {
         self.items = items
         collectionView?.reloadData()
-    }
-
-    // MARK: Private methods
-
-    private func makeLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: Constants.cardWidth, height: Constants.cardHeight)
-        layout.minimumLineSpacing = Constants.cardSpacing
-        layout.sectionInset = UIEdgeInsets(
-            top: 0,
-            left: Constants.sectionHorizontalInset,
-            bottom: 0,
-            right: Constants.sectionHorizontalInset
-        )
-        return layout
     }
 }
 

@@ -20,7 +20,7 @@ final class TransactionCollectionCell: UICollectionViewCell {
     private let iconContainer: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = Constants.iconContainerCornerRadius
+        view.layer.cornerRadius = DS.Radius.xl
         view.clipsToBounds = true
         return view
     }()
@@ -28,7 +28,7 @@ final class TransactionCollectionCell: UICollectionViewCell {
     private let iconLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: Constants.iconFontSize, weight: .semibold)
+        label.apply(.title2)
         label.textAlignment = .center
         return label
     }()
@@ -36,8 +36,7 @@ final class TransactionCollectionCell: UICollectionViewCell {
     private let commentLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: Constants.commentFontSize, weight: .medium)
-        label.textColor = Theme.Colors.blackText
+        label.apply(.bodyMedium)
         label.numberOfLines = 1
         return label
     }()
@@ -45,15 +44,14 @@ final class TransactionCollectionCell: UICollectionViewCell {
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: Constants.dateFontSize, weight: .regular)
-        label.textColor = Theme.Colors.defaultTextColor
+        label.apply(.caption2)
         return label
     }()
 
     private let amountLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: Constants.amountFontSize, weight: .semibold)
+        label.apply(.bodySemibold)
         label.textAlignment = .right
         return label
     }()
@@ -68,7 +66,7 @@ final class TransactionCollectionCell: UICollectionViewCell {
     private let separatorLine: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = Theme.Colors.defaultBorderColor.withAlphaComponent(Constants.separatorAlpha)
+        view.backgroundColor = DS.Colors.defaultBorderColor.withAlphaComponent(Constants.separatorAlpha)
         return view
     }()
 
@@ -106,29 +104,29 @@ final class TransactionCollectionCell: UICollectionViewCell {
 
         switch viewModel.direction {
         case .credit:
-            amountLabel.textColor = Theme.Colors.successColor
-            iconContainer.backgroundColor = Theme.Colors.successColor.withAlphaComponent(Constants.iconBackgroundAlpha)
-            iconLabel.text = Constants.creditIcon
-            iconLabel.textColor = Theme.Colors.successColor
+            amountLabel.textColor = DS.Colors.successColor
+            iconContainer.backgroundColor = DS.Colors.successColor.withAlphaComponent(Constants.iconBackgroundAlpha)
+            iconLabel.text = DS.Icons.creditArrow
+            iconLabel.textColor = DS.Colors.successColor
         case .debit:
-            amountLabel.textColor = Theme.Colors.errorColor
-            iconContainer.backgroundColor = Theme.Colors.errorColor.withAlphaComponent(Constants.iconBackgroundAlpha)
-            iconLabel.text = Constants.debitIcon
-            iconLabel.textColor = Theme.Colors.errorColor
+            amountLabel.textColor = DS.Colors.errorColor
+            iconContainer.backgroundColor = DS.Colors.errorColor.withAlphaComponent(Constants.iconBackgroundAlpha)
+            iconLabel.text = DS.Icons.debitArrow
+            iconLabel.textColor = DS.Colors.errorColor
         }
 
         switch viewModel.status {
         case .success:
-            statusDot.backgroundColor = Theme.Colors.successColor
+            statusDot.backgroundColor = DS.Colors.successColor
         case .failed:
-            statusDot.backgroundColor = Theme.Colors.errorColor
+            statusDot.backgroundColor = DS.Colors.errorColor
         }
     }
 
     // MARK: Private methods
 
     private func setupView() {
-        backgroundColor = .white
+        backgroundColor = DS.Colors.background
 
         contentView.addSubview(iconContainer)
         iconContainer.addSubview(iconLabel)
@@ -141,7 +139,7 @@ final class TransactionCollectionCell: UICollectionViewCell {
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            iconContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.horizontalInset),
+            iconContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: DS.Spacing.m),
             iconContainer.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconContainer.widthAnchor.constraint(equalToConstant: Constants.iconContainerSize),
             iconContainer.heightAnchor.constraint(equalToConstant: Constants.iconContainerSize),
@@ -151,7 +149,7 @@ final class TransactionCollectionCell: UICollectionViewCell {
 
             commentLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.verticalInset),
             commentLabel.leadingAnchor.constraint(equalTo: iconContainer.trailingAnchor, constant: Constants.iconToTextSpacing),
-            commentLabel.trailingAnchor.constraint(equalTo: amountLabel.leadingAnchor, constant: -Constants.textToAmountSpacing),
+            commentLabel.trailingAnchor.constraint(equalTo: amountLabel.leadingAnchor, constant: -DS.Spacing.s),
 
             dateLabel.topAnchor.constraint(equalTo: commentLabel.bottomAnchor, constant: Constants.commentToDateSpacing),
             dateLabel.leadingAnchor.constraint(equalTo: commentLabel.leadingAnchor),
@@ -163,7 +161,7 @@ final class TransactionCollectionCell: UICollectionViewCell {
             statusDot.heightAnchor.constraint(equalToConstant: Constants.statusDotSize),
 
             amountLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            amountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.horizontalInset),
+            amountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -DS.Spacing.m),
             amountLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: Constants.amountMinWidth),
 
             separatorLine.heightAnchor.constraint(equalToConstant: Constants.separatorHeight),
@@ -178,23 +176,13 @@ final class TransactionCollectionCell: UICollectionViewCell {
 
 private extension TransactionCollectionCell {
     enum Constants {
-        static let horizontalInset: CGFloat = 16
         static let verticalInset: CGFloat = 14
         static let iconToTextSpacing: CGFloat = 12
-        static let textToAmountSpacing: CGFloat = 8
         static let commentToDateSpacing: CGFloat = 4
         static let statusDotSpacing: CGFloat = 6
 
         static let iconContainerSize: CGFloat = 44
-        static let iconContainerCornerRadius: CGFloat = 22
 
-        static let iconFontSize: CGFloat = 18
-        static let creditIcon: String = "↓"
-        static let debitIcon: String = "↑"
-
-        static let commentFontSize: CGFloat = 15
-        static let dateFontSize: CGFloat = 12
-        static let amountFontSize: CGFloat = 15
         static let amountMinWidth: CGFloat = 80
 
         static let statusDotSize: CGFloat = 6

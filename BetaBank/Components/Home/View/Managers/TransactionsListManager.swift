@@ -28,7 +28,7 @@ final class TransactionsListManager: NSObject {
 
     func bind(to collectionView: UICollectionView) {
         self.collectionView = collectionView
-        collectionView.collectionViewLayout = makeLayout()
+        collectionView.collectionViewLayout = TransactionsCollectionLayout()
         collectionView.delegate = self
 
         collectionView.register(
@@ -61,37 +61,6 @@ final class TransactionsListManager: NSObject {
     }
 
     // MARK: Private methods
-
-    private func makeLayout() -> UICollectionViewLayout {
-        UICollectionViewCompositionalLayout { _, _ in
-            let itemSize = NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(Constants.itemFractionalWidth),
-                heightDimension: .absolute(Constants.itemEstimatedHeight)
-            )
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-            let groupSize = NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(Constants.itemFractionalWidth),
-                heightDimension: .absolute(Constants.itemEstimatedHeight)
-            )
-            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-
-            let section = NSCollectionLayoutSection(group: group)
-
-            let headerSize = NSCollectionLayoutSize(
-                widthDimension: .fractionalWidth(Constants.itemFractionalWidth),
-                heightDimension: .absolute(Constants.headerHeight)
-            )
-            let header = NSCollectionLayoutBoundarySupplementaryItem(
-                layoutSize: headerSize,
-                elementKind: UICollectionView.elementKindSectionHeader,
-                alignment: .top
-            )
-            section.boundarySupplementaryItems = [header]
-
-            return section
-        }
-    }
 
     private func makeDataSource(
         for collectionView: UICollectionView

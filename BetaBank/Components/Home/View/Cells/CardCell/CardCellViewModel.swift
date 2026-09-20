@@ -19,7 +19,7 @@ final class CardCollectionCell: UICollectionViewCell {
     private let gradientLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
         layer.colors = [
-            Theme.Colors.accentColor.cgColor,
+            DS.Colors.accentColor.cgColor,
             Constants.gradientMidColor.cgColor,
             Constants.gradientEndColor.cgColor
         ]
@@ -31,7 +31,7 @@ final class CardCollectionCell: UICollectionViewCell {
     private let glowView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = Theme.Colors.whiteText.withAlphaComponent(Constants.glowAlpha)
+        view.backgroundColor = DS.Colors.whiteText.withAlphaComponent(Constants.glowAlpha)
         view.layer.cornerRadius = Constants.glowCornerRadius
         return view
     }()
@@ -39,32 +39,28 @@ final class CardCollectionCell: UICollectionViewCell {
     private let holderLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: Constants.holderFontSize, weight: .semibold)
-        label.textColor = Theme.Colors.whiteText
+        label.apply(.lightTitle2)
         return label
     }()
 
     private let bankNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: Constants.bankFontSize, weight: .regular)
-        label.textColor = Theme.Colors.whiteText.withAlphaComponent(Constants.bankNameAlpha)
+        label.apply(.lightCaption)
         return label
     }()
 
     private let cardNumberLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.monospacedSystemFont(ofSize: Constants.cardNumberFontSize, weight: .regular)
-        label.textColor = Theme.Colors.whiteText.withAlphaComponent(Constants.cardNumberAlpha)
+        label.apply(.lightMonospacedBody)
         return label
     }()
 
     private let balanceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: Constants.balanceFontSize, weight: .bold)
-        label.textColor = Theme.Colors.whiteText
+        label.apply(.lightTitle)
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = Constants.balanceMinScale
         return label
@@ -73,8 +69,7 @@ final class CardCollectionCell: UICollectionViewCell {
     private let validateLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.monospacedSystemFont(ofSize: Constants.validateFontSize, weight: .medium)
-        label.textColor = Theme.Colors.whiteText.withAlphaComponent(Constants.validateAlpha)
+        label.apply(.lightMonospacedCaption)
         label.textAlignment = .right
         return label
     }()
@@ -120,7 +115,7 @@ final class CardCollectionCell: UICollectionViewCell {
     // MARK: Private methods
 
     private func setupView() {
-        contentView.layer.cornerRadius = Constants.cornerRadius
+        contentView.layer.cornerRadius = DS.Radius.l
         contentView.clipsToBounds = true
         contentView.layer.insertSublayer(gradientLayer, at: 0)
 
@@ -131,11 +126,7 @@ final class CardCollectionCell: UICollectionViewCell {
         contentView.addSubview(balanceLabel)
         contentView.addSubview(validateLabel)
 
-        layer.shadowColor = Theme.Colors.accentColor.cgColor
-        layer.shadowOpacity = Constants.shadowOpacity
-        layer.shadowOffset = CGSize(width: Constants.shadowOffsetX, height: Constants.shadowOffsetY)
-        layer.shadowRadius = Constants.shadowRadius
-        layer.masksToBounds = false
+        layer.applyShadow(DS.Shadow.card)
     }
 
     private func setupConstraints() {
@@ -144,20 +135,20 @@ final class CardCollectionCell: UICollectionViewCell {
             glowView.heightAnchor.constraint(equalToConstant: Constants.glowSize),
             glowView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: Constants.glowTrailingOffset),
             glowView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            holderLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.verticalInset),
-            holderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.horizontalInset),
-            holderLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.horizontalInset),
+            holderLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: DS.Spacing.l),
+            holderLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: DS.Spacing.l),
+            holderLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -DS.Spacing.l),
             bankNameLabel.topAnchor.constraint(equalTo: holderLabel.bottomAnchor, constant: Constants.holderToBankSpacing),
-            bankNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.horizontalInset),
-            bankNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.horizontalInset),
+            bankNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: DS.Spacing.l),
+            bankNameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -DS.Spacing.l),
             cardNumberLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            cardNumberLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.horizontalInset),
-            cardNumberLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.horizontalInset),
-            balanceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.verticalInset),
-            balanceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Constants.horizontalInset),
-            balanceLabel.trailingAnchor.constraint(equalTo: validateLabel.leadingAnchor, constant: -Constants.balanceToValidateSpacing),
+            cardNumberLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: DS.Spacing.l),
+            cardNumberLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -DS.Spacing.l),
+            balanceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -DS.Spacing.l),
+            balanceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: DS.Spacing.l),
+            balanceLabel.trailingAnchor.constraint(equalTo: validateLabel.leadingAnchor, constant: -DS.Spacing.s),
             validateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.validateBottomInset),
-            validateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.horizontalInset),
+            validateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -DS.Spacing.l),
             validateLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: Constants.validateMinWidth)
         ])
     }
@@ -170,33 +161,15 @@ private extension CardCollectionCell {
         static let gradientMidColor = UIColor(red: 0.300, green: 0.200, blue: 0.780, alpha: 1)
         static let gradientEndColor = UIColor(red: 0.213, green: 0.310, blue: 0.850, alpha: 1)
 
-        static let horizontalInset: CGFloat = 20
-        static let verticalInset: CGFloat = 20
         static let holderToBankSpacing: CGFloat = 4
-        static let balanceToValidateSpacing: CGFloat = 8
         static let validateBottomInset: CGFloat = 22
-
-        static let cornerRadius: CGFloat = 20
-        static let shadowOpacity: Float = 0.4
-        static let shadowOffsetX: CGFloat = 0
-        static let shadowOffsetY: CGFloat = 10
-        static let shadowRadius: CGFloat = 18
 
         static let glowSize: CGFloat = 160
         static let glowCornerRadius: CGFloat = 80
         static let glowTrailingOffset: CGFloat = 20
         static let glowAlpha: CGFloat = 0.08
 
-        static let holderFontSize: CGFloat = 20
-        static let bankFontSize: CGFloat = 13
-        static let cardNumberFontSize: CGFloat = 15
-        static let balanceFontSize: CGFloat = 22
-        static let validateFontSize: CGFloat = 13
         static let balanceMinScale: CGFloat = 0.7
-
-        static let bankNameAlpha: CGFloat = 0.7
-        static let cardNumberAlpha: CGFloat = 0.85
-        static let validateAlpha: CGFloat = 0.75
 
         static let validateMinWidth: CGFloat = 50
     }

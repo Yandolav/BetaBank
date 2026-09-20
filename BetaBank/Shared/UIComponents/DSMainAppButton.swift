@@ -1,22 +1,21 @@
 import UIKit
 
-class MainAppButton: UIControl {
+struct DSMainAppButtonViewModel {
+    let title: String
+}
 
-    // MARK: Public properties
-
-    var currentState: MainAppButtonState = .enable {
-        didSet {
-            changeState()
-        }
-    }
+class DSMainAppButton: UIControl {
 
     // MARK: Private properties
+
+    private var currentState: DSMainAppButtonState = .enable {
+        didSet { changeState() }
+    }
 
     private let title: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = Theme.Colors.whiteText
-        label.font = Theme.Fonts.body
+        label.apply(.lightBody)
         label.textAlignment = .center
         return label
     }()
@@ -35,25 +34,28 @@ class MainAppButton: UIControl {
 
     // MARK: Public methods
 
-    func changeText(text: String) {
-        title.text = text
+    func configure(with viewModel: DSMainAppButtonViewModel) {
+        title.text = viewModel.title
+    }
+
+    func setState(_ state: DSMainAppButtonState) {
+        currentState = state
     }
 
     // MARK: Private methods
 
     private func setupView() {
-        self.backgroundColor = Theme.Colors.accentColor
-        self.isEnabled = true
-        self.layer.cornerRadius = Constants.cornerRadius
+        self.backgroundColor = DS.Colors.accentColor
+        self.layer.cornerRadius = DS.Radius.m
         self.addSubview(title)
     }
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: topAnchor, constant: Constants.titleTopInset),
-            title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.titleHorizontalInset),
-            title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.titleHorizontalInset),
-            title.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.titleBottomInset)
+            title.topAnchor.constraint(equalTo: topAnchor, constant: DS.Spacing.sm),
+            title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: DS.Spacing.sm),
+            title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -DS.Spacing.sm),
+            title.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -DS.Spacing.sm)
         ])
     }
 
@@ -62,10 +64,10 @@ class MainAppButton: UIControl {
 
         switch currentState {
         case .enable:
-            self.backgroundColor = Theme.Colors.accentColor
+            self.backgroundColor = DS.Colors.accentColor
             self.isEnabled = true
         case .disable:
-            self.backgroundColor = Theme.Colors.unavailableСolor
+            self.backgroundColor = DS.Colors.unavailableColor
             self.isEnabled = false
         case .loading:
             self.isEnabled = false
@@ -84,8 +86,8 @@ class MainAppButton: UIControl {
 
 // MARK: - MainAppButtonState
 
-extension MainAppButton {
-    enum MainAppButtonState {
+extension DSMainAppButton {
+    enum DSMainAppButtonState {
         case enable
         case disable
         case loading
@@ -94,14 +96,8 @@ extension MainAppButton {
 
 // MARK: - Constants
 
-private extension MainAppButton {
+private extension DSMainAppButton {
     enum Constants {
-        static let cornerRadius: CGFloat = 15
-
-        static let titleTopInset: CGFloat = 10
-        static let titleBottomInset: CGFloat = 10
-        static let titleHorizontalInset: CGFloat = 10
-
         static let loadingAnimationDuration: TimeInterval = 2
         static let loadingAnimationDelay: TimeInterval = 0
         static let loadingAlpha: CGFloat = 0.5

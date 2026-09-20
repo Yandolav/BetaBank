@@ -12,15 +12,14 @@ final class AddCardView: UIView {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Add Card"
-        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
-        label.textColor = Theme.Colors.blackText
+        label.apply(.body)
         label.textAlignment = .center
         return label
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .white
+        backgroundColor = DS.Colors.background
         addSubview(titleLabel)
         NSLayoutConstraint.activate([
             titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
